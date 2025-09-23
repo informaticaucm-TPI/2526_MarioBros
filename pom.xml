@@ -1,0 +1,37 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>es.ucm.fdi.tp</groupId>  <!-- tu organización; ej.: es.ucm.fdi.tp -->
+    <artifactId>p1</artifactId>  <!-- nombre del proyecto -->
+    <version>0.1-SNAPSHOT</version>
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>  
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.0</version>
+            <scope>test</scope>
+        </dependency> 
+    </dependencies>  
+    <build>
+      <plugins>
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>3.5.1</version>
+            <configuration>
+                <mainClass>tp1.Main</mainClass> <!-- para mvn exec:java -->
+                <arguments>
+                <!-- mueve argumentos fuera del comentario para que se usen
+                    <argument>arg1</argument>
+                    <argument>arg2</argument>
+                -->
+                </arguments>
+            </configuration>
+        </plugin>
+      </plugins>
+    </build>
+</project>

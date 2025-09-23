@@ -21,6 +21,11 @@ public class Game {
 		return false;
 	}
 
+	public boolean playerLoses() {
+		// TODO Auto-generated method stub
+		return false;
+	}  
+
 	public int remainingTime() {
 		// TODO Auto-generated method stub
 		return 100;
