@@ -1,3 +1,6 @@
+# Maven target dir
+target/
+
 # Compiled class file
 *.class
 
@@ -28,5 +31,12 @@ replay_pid*
 .classpath
 .project
 
+# VS Code config
+.vscode
+
 # Other files
 *.bak
+
+# Output files for tests
+**/*_output.txt
+
