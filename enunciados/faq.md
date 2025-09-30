@@ -10,7 +10,8 @@ Como el comando permite recibir un argumento entero con el número del mapa, si 
 
 ### La salida por consola muestra caracteres extraños, ¿qué ocurre?
 
-**En consola Windows 11, ó con VS Code en Windows 11**: Necesitarás configurar la consola copiando y pegando el siguiente fragmento (y pulsando `enter` para que tenga efecto). Para pegar texto en la consola, copia el texto primero (con `Ctrl+C`), y pégalo después con un click con el *botón derecho* en la consola:
+**En consola Windows 11, ó con VS Code en Windows 11**: Necesitarás configurar la consola (sólo funciona con `PowerShell`, no con `cmd`) copiando y pegando el siguiente fragmento (y pulsando `enter` para que tenga efecto). 
+Primero, asegúrate de que estás en **PowerShell** escribiendo `powershell` y aprentando `enter`; luego, para pegar texto en la consola, copia el texto primero (con `Ctrl+C`), y pégalo después con un click con el *botón derecho* en la consola:
 
 ~~~
 [Console]::InputEncoding = [Console]::OutputEncoding = New-Object System.Text.UTF8Encoding
