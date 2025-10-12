@@ -10,6 +10,9 @@ public class Position {
 	private int col;
 	private int row;
 
+	public Position(int row, int col) {
+		// TODO Auto-generated constructor stub
+	}
 	//TODO fill your code
 
 }

@@ -4,6 +4,8 @@ public class Game {
 
 	public static final int DIM_X = 30;
 	public static final int DIM_Y = 15;
+	
+	private GameObjectContainer gameObjects;
 
 	//TODO fill your code
 	
@@ -12,8 +14,10 @@ public class Game {
 	}
 	
 	public String positionToString(int col, int row) {
-		// TODO Auto-generated method stub
-		return null;
+
+		Position pos = new Position(row, col);
+		
+		return this.gameObjects.postitionToString(pos);
 	}
 
 	public boolean playerWins() {
@@ -40,6 +44,22 @@ public class Game {
 	public String toString() {
 		// TODO returns a textual representation of the object
 		return "TODO: Hola soy el game";
+	}
+
+	public boolean isFinished() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean playerLoses() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	// Not mandatory but recommended
+	public void exit() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	/*

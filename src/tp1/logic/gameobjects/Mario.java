@@ -1,8 +1,6 @@
 package tp1.logic.gameobjects;
 
-import tp1.logic.Game;
-
-public class Mario {
+public class Mario  {
 
 	//TODO fill your code
 	

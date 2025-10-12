@@ -10,21 +10,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
-import org.junit.jupiter.api.Test;
-
-public class Tests {
-	public static final String DIR = "tests/pr1/";
-	public static final String FILE_PREFIXES[] = {
-			"00_0-helpPaint",
-			"00_1-commands",
-			"00_2-movements",
-			"01_3-winsNoColision",
-			"01_4-loseNoColision",
-			"01_5-colisions",
-			"01_6-randomPlay"
-			};
+public final class TestsUtils {
+	private TestsUtils() {} // prevents instances (static class)
 
 	private static boolean areSegmentsEquivalent(String segment1, String segment2) {
 	    // Ordena los caracteres de ambos segmentos y los compara
@@ -101,19 +89,17 @@ public class Tests {
 			String actualLine = actual.readLine();
 			int lineNumber = 1;
 			while (same && expectedLine != null && actualLine != null) {
-				same = expectedLine.equals(actualLine);
+				same = expectedLine.equals(actualLine) ||
+					   areLinesEquivalent(expectedLine,actualLine); // ORDER not important
 				if (!same) {
-					if(!areLinesEquivalent(expectedLine,actualLine)){
 						String lineMessage = "Line: %d%n".formatted(lineNumber);
 						String expectedMessage = "Expected: %s%n".formatted(expectedLine);
 						String actualMessage = "Actual  : %s%n".formatted(actualLine);
 						System.out.println(lineMessage + expectedMessage + actualMessage);
 						
 						fail(lineMessage + expectedMessage + actualMessage);
-					}
-					else
-						same = true;
 				}
+
 				expectedLine = expected.readLine();
 				actualLine = actual.readLine();
 				lineNumber++;
@@ -124,7 +110,7 @@ public class Tests {
 		return same;
 	}
 
-    public void parameterizedTest(Path input, Path expected, Path output, String[] args) {
+    public static void parameterizedTest(Path input, Path expected, Path output, String[] args) {
 		try (PrintStream out = new PrintStream(output.toFile()); InputStream in = new FileInputStream(input.toFile())) {
 			PrintStream oldOut = System.out;
 			InputStream oldIn = System.in;
@@ -149,27 +135,4 @@ public class Tests {
 			fail();
 		}
 	}
-
-	private void testN(int n) {
-		String mapa = FILE_PREFIXES[n].substring(0, 2);
-		parameterizedTest(Paths.get(DIR + FILE_PREFIXES[n] + "_input.txt"), 
-				          Paths.get(DIR + FILE_PREFIXES[n] + "_expected.txt"),
-				          Paths.get(DIR + FILE_PREFIXES[n] + "_output.txt"),
-				new String[] { mapa, "NO_COLORS" });
-	}
-	
-	@Test
-	public void test00() { 	testN(0); }
-	@Test
-	public void test01() { 	testN(1); }
-	@Test
-	public void test02() { 	testN(2); }
-	@Test
-	public void test03() { 	testN(3); }
-	@Test
-	public void test04() { 	testN(4); }
-	@Test
-	public void test05() { 	testN(5); }
-	@Test
-	public void test06() { 	testN(6); }
 }
