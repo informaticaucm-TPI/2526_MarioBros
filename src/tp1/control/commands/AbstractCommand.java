@@ -24,9 +24,6 @@ public abstract class AbstractCommand implements Command {
 	protected String getDetails() { return details; }
 	protected String getHelp() { return help; }
 
-	public abstract void execute(Game game, GameView view);	  
-	public abstract Command parse(String[] commandWords);
-
 	protected boolean matchCommandName(String name) {
 		return getShortcut().equalsIgnoreCase(name) || 
 			   getName().equalsIgnoreCase(name);
