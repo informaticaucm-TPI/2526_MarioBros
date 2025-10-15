@@ -350,7 +350,7 @@ Java generics will be studied in detail in the TP2 course.
 
 [^10]: **Design principles**: This is in accordance with the design principle known as *Separation of Concerns* or,
 more specific to classes in OOP, the *Single Responsibility Principle*, the **S** of the **SOLID** design
-principles. As a *sanity check*, imagine, for example, that you decide to change the implementation of the
+principles. As a *sanity check*, imagine, for example, that you decided to change the implementation of the
 `GameObjectContainer` to store the game objects in a 2-dimensional array of objects that do not know
 their own position, instead of using a list of objects that do know their own position. Would you need to
 introduce any modifications in the code of the `Game` class of your implementation? The answer should be no.
@@ -496,6 +496,7 @@ Recall that after refactoring, the program should have exactly the same function
 error messages may need to be less precise) and should therefore pass the same system tests, even though the implementation now contains many more classes.
 
 The template that we provide you with includes classes called `tp1.Tests_V2_1` and `tp1.Tests_V2_1` which, like `tp1.Tests`, are classes of JUnit tests, the former containing the test cases for part I of this assignment and the latter containing test cases for the extensions implemented in part II of this assignment.
+
 
 
 
