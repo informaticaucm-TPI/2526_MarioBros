@@ -164,7 +164,7 @@ adapted to the needs of this assignment.
 [^4]: **Design principles**: Syntactic validity of the arguments should be checked in the parsing of the *Controller*
 MVC component whereas semantic validity of the arguments (e.g. a position is invalid due to being off the board)
 should be checked in the *Model* MVC component. This is in accordance with the design principle known as
-*Seperation of Concerns*.
+*Separation of Concerns*.
 
 [^5]: **Design principles**: Fragile code is code which makes implicit assumptions about its
 environment (where this refers to the rest of the program code together with the program environment)
@@ -347,7 +347,7 @@ used in functional programming in the mid-70s and introduced in Java in 2004 (wi
 The polymorphism associated with inheritance is called *inclusion polymorphism* or *subtype polymorphism*.
 Java generics will be studied in detail in the TP2 course.
 
-[^10]: **Design principles**: This is in accordance with the design principle known as *Seperation of Concerns* or,
+[^10]: **Design principles**: This is in accordance with the design principle known as *Separation of Concerns* or,
 more specific to classes in OOP, the *Single Responsibility Principle*, the **S** of the **SOLID** design
 principles. As a *sanity check*, imagine, for example, that you decide to change the implementation of the
 `GameObjectContainer` to store the game objects in a 2-dimensional array of objects that do not know
@@ -495,6 +495,7 @@ Recall that after refactoring, the program should have exactly the same function
 error messages may need to be less precise) and should therefore pass the same system tests, even though the implementation now contains many more classes.
 
 The template that we provide you with includes classes called `tp1.Tests_V2_1` and `tp1.Tests_V2_1` which, like `tp1.Tests`, are classes of JUnit tests, the former containing the test cases for part I of this assignment and the latter containing test cases for the extensions implemented in part II of this assignment.
+
 
 
 
