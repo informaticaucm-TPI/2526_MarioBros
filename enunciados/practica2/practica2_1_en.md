@@ -83,7 +83,7 @@ The following classes are involved in our application of the *command pattern*:
 -  `Command`: an interface that defines the public methods of any command, namely `execute`, `parse` and `helpText`.
 
 - `AbstractCommmand`: an abstract class that encapsulates the functionality common to all the concrete
-   commands. It has four attributes of type `String`, initialised in its constructor -- `name`,
+   commands. It has four attributes of type `String` that are initialised in its constructor -- `name`,
    `shortcut` (the abbreviated name), `details` (the initial part of its help message), `help`
    (the details of its help message) -- and *getter* methods for at least `name` and `shortcut` whose
    values are needed by the `parse` methods of the subclasses (instead of making these attributes
@@ -280,7 +280,7 @@ called `GameObject`, from which all the concrete game object classes
 (currently `Mario`, `Ground`, `Goomba` and `ExitDoor`) derive. So *the game code of the `game` and of the
 `container` must **not** seek to
 identify the  dynamic type (i.e. which concrete subclass of `GameObject`) of the objects it is
-handling*[^7].
+handling* [^7].
 
 The `GameObject` class should contain
 all the attributes and methods that are common to all the concrete game object classes; where appropriate,
@@ -311,6 +311,7 @@ The classes `Ground` and `ExitDoor` inherit directly from `Gameobject`.
 [^7]: **Design principles**: ensuring that `Game` and `GameObjectContainer` are high-level classes that do
 not depend on any concrete implementation, is in accordance with the **D** of the **SOLID** design principles
 (the ***D**ependency Inversion Principle*).
+
 [^8]: **Design principles**: This is in accordance with the DRY (*Don't Repeat Yourself*) design principle. 
 
 <!-- TOC --><a name="contenedor-de-objetos-del-juego"></a>
@@ -495,6 +496,7 @@ Recall that after refactoring, the program should have exactly the same function
 error messages may need to be less precise) and should therefore pass the same system tests, even though the implementation now contains many more classes.
 
 The template that we provide you with includes classes called `tp1.Tests_V2_1` and `tp1.Tests_V2_1` which, like `tp1.Tests`, are classes of JUnit tests, the former containing the test cases for part I of this assignment and the latter containing test cases for the extensions implemented in part II of this assignment.
+
 
 
 
