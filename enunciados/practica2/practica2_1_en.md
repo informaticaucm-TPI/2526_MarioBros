@@ -399,7 +399,7 @@ interaction is initiated by one of the objects involved. A valid implementation 
 	  	boolean canInteract = other.isInPosition(this.pos)
 	  	if (canInteract) {
 	  		...
-			... other.interactWith(this);
+			... other.receiveInteraction(this);
 			...
 		}
 		return canInteract && ...
@@ -496,6 +496,7 @@ Recall that after refactoring, the program should have exactly the same function
 error messages may need to be less precise) and should therefore pass the same system tests, even though the implementation now contains many more classes.
 
 The template that we provide you with includes classes called `tp1.Tests_V2_1` and `tp1.Tests_V2_1` which, like `tp1.Tests`, are classes of JUnit tests, the former containing the test cases for part I of this assignment and the latter containing test cases for the extensions implemented in part II of this assignment.
+
 
 
 
