@@ -42,7 +42,7 @@ ways (involving two inheritance hierarchies):
     about the state of the game, using a single data structure instead of multiple lists.
     
     To preserve the genericity of the `Game` and `GameObjectContainer` classes without
-    introducing *ad-hoc* properties to the game objects we will introduce a generic
+    introducing *ad-hoc* properties in the game objects we will introduce a generic
     mechanism for handling interactions between game objects using a technique called
     *double-dispatch*.
     
@@ -495,6 +495,7 @@ Recall that after refactoring, the program should have exactly the same function
 error messages may need to be less precise) and should therefore pass the same system tests, even though the implementation now contains many more classes.
 
 The template that we provide you with includes classes called `tp1.Tests_V2_1` and `tp1.Tests_V2_1` which, like `tp1.Tests`, are classes of JUnit tests, the former containing the test cases for part I of this assignment and the latter containing test cases for the extensions implemented in part II of this assignment.
+
 
 
 
