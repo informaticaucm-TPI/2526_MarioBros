@@ -27,12 +27,12 @@ the code developed in the previous assignment as follows:
 - In Part I of this assignment, we refactor[^1] the code of the previous assignment in the following
 ways (involving two inheritance hierarchies):
 
-  - First, by removing some code from the controller `run` method and distributing
+  - Firstly, by removing some code from the controller `run` method and distributing
     its functionality among an inheritance hierarchy of classes, enabling the `Controller`
     class to be generic, i.e. it has no dependence on the exact commands used. This
     involves applying what is known as the *command pattern*.
 
-  - Second, by defining an inheritance hierarchy of game objects, the leaves of which will be the classes that
+  - Secondly, by defining an inheritance hierarchy of game objects, the leaves of which will be the classes that
     were used in the previous assignment, namely `Mario`, `Goomba`, `Ground` and `ExitDoor`,
     enabling the `Game` and `GameObjectContainer` classes to be generic, i.e. they have no
     dependence on the exact game objects used (**and they certainly do not use `isinstance`
@@ -495,6 +495,7 @@ Recall that after refactoring, the program should have exactly the same function
 error messages may need to be less precise) and should therefore pass the same system tests, even though the implementation now contains many more classes.
 
 The template that we provide you with includes classes called `tp1.Tests_V2_1` and `tp1.Tests_V2_1` which, like `tp1.Tests`, are classes of JUnit tests, the former containing the test cases for part I of this assignment and the latter containing test cases for the extensions implemented in part II of this assignment.
+
 
 
 
