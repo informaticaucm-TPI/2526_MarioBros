@@ -182,8 +182,8 @@ so why make this assumption, given that it is completely unnecessary to do so?
 [^6]: **Design principles**: Already in Assignment 1, ensuring that the *Controller* MVC component did not
 contain any logic was in accordance with the design principle known as *thin controllers, fat models*, a
 property that we conserve in Assignment 2.
-In ensuring that the central part of the *Controller* MVC component, i.e. the `Controller` class, is a high-level
-class that does not depend on any concrete implementation, is in accordance with the **D** of
+Ensuring that the central part of the *Controller* MVC component, i.e. the `Controller` class, is a high-level
+class that does not depend on any concrete implementation is in accordance with the **D** of
 the **SOLID** design principles (the ***D**ependency Inversion Principle*).
 
 **Main loop of the program**. In the previous assignment, in order to know which command to execute,
@@ -495,5 +495,6 @@ Recall that after refactoring, the program should have exactly the same function
 error messages may need to be less precise) and should therefore pass the same system tests, even though the implementation now contains many more classes.
 
 The template that we provide you with includes classes called `tp1.Tests_V2_1` and `tp1.Tests_V2_1` which, like `tp1.Tests`, are classes of JUnit tests, the former containing the test cases for part I of this assignment and the latter containing test cases for the extensions implemented in part II of this assignment.
+
 
 
