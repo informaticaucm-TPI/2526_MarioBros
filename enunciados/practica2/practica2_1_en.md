@@ -437,7 +437,7 @@ The `Game` class offers services to different parts of the program, namely:
 
 - *View*: invokes methods that return information about the state of the game, such as `getPoints`, `playerWins` o `positionToString`, that is needed to display the current state.
 
-- *Model*: the game objects (part of the model, as is the `Game` class itself) invoke those methods of the game, such as `isSolid(Position)`, `addPoints(int)` or `marioArrived()`, that concern interactions between game objects. Since these calls *to* the game from the game objects result from calls *by* the game to the game objects (via the container, usually as part of an update), they are referred to as *callbacks*.
+- *Model*: the game objects (part of the *Model*, as is the `Game` class itself) invoke those methods of the game, such as `isSolid(Position)`, `addPoints(int)` or `marioArrived()`, that concern interactions between game objects. Since these calls *to* the game from the game objects result from calls *by* the game to the game objects (via the container, usually as part of an update), they are referred to as *callbacks*.
 
 Notice that with the current implementation, nothing prevents the *model* invoking a method of `Game` that was designed for the *controller* to invoke, e.g. a game object invoking the `reset` method, or the *view* invoking a method of `Game` designed for the *model* to invoke, e.g. the game view invoking the `marioArrived` method, etc. In order for the compiler to detect such inconsistent invocations we can use interfaces to define *partial views* on the services offered by the `Game` class. To that end, we define the following three interfaces [^11]:
 
@@ -481,7 +481,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 }
 ```
 
-Finally, in each part of the three parts of the program, we must replace each occurrence of the type `Game` by the corresponding interface type. For example, the execute method of the `Command` class now has the following form:
+Finally, in each of the three parts of the program, we must replace each occurrence of the type `Game` by the corresponding interface type. For example, the execute method of the `Command` class now has the following form:
 
 ```java
 public abstract void execute(GameModel game, GameView view);
@@ -496,6 +496,7 @@ Recall that after refactoring, the program should have exactly the same function
 error messages may need to be less precise) and should therefore pass the same system tests, even though the implementation now contains many more classes.
 
 The template that we provide you with includes classes called `tp1.Tests_V2_1` and `tp1.Tests_V2_1` which, like `tp1.Tests`, are classes of JUnit tests, the former containing the test cases for part I of this assignment and the latter containing test cases for the extensions implemented in part II of this assignment.
+
 
 
 
