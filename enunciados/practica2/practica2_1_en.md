@@ -229,7 +229,7 @@ addition of new concrete commands with minimal changes to the existing code.
 **The `CommandGenerator` class**. The `parse` method of this class is a static method
 which returns an instance of the concrete command class that corresponds to the text entered
 by the user. To this end, the `CommandGenerator` class has a static attribute containing a list
-of instances implementing the interface `Command`, concretely, it contains exactly one instance of 
+of instances implementing the `Command` interface, concretely, it contains exactly one instance of 
 each of the existing concrete command classes. The `parse` method of the `CommandGenerator` method
 traverses this list calling the `parse` method of each object on it.
 If any of these `parse` methods returns a non-null value (which will be one of the concrete
@@ -239,7 +239,7 @@ otherwise it returns the value `null`.
 The `CommandGenerator` contains another static method `commandHelp` that generates
 the output of the help command (so must be called by the `execute` method of the `HelpCommand`
 class). Like the `parse` command, it accomplishes its task by traversing the `AVAILABLE_COMMANDS`
-list but in this case invoking the `helpText()` method of each object in the list.
+list but in this case invoking the `helpText()` method of each object on the list.
 
 The following is a skeleton of this code:
 
@@ -498,6 +498,7 @@ Recall that after refactoring, the program should have exactly the same function
 error messages may need to be less precise) and should therefore pass the same system tests, even though the implementation now contains many more classes.
 
 The template that we provide you with includes classes called `tp1.Tests_V2_1` and `tp1.Tests_V2_1` which, like `tp1.Tests`, are classes of JUnit tests, the former containing the test cases for part I of this assignment and the latter containing test cases for the extensions implemented in part II of this assignment.
+
 
 
 
