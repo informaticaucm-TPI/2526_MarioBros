@@ -316,7 +316,6 @@ Lives: 3
 Command > [DEBUG] Executing: r 22
 
 [ERROR] Error: Not valid level number
-
 Command > [DEBUG] Executing: E
 
 Player leaves the game
