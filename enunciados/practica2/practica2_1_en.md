@@ -4,7 +4,7 @@
 	- [Refactoring the solution of the previous assignment](#refactorización-de-la-solución-de-la-práctica-anterior)
 		- [The command inheritance hierarchy](#patrón-command)
 		- [The game-object inheritance hierarchy](#herencia-y-polimorfismo)
-		- [Simplifying the Game object container](#contenedor-de-objetos-del-juego)
+		- [Simplifying the game-object container](#contenedor-de-objetos-del-juego)
 		- [Generalizing the interactions between game objects](#generalizacion-interacciones)
 		- [Interfaces implemented by the `Game` class](#interfaces-de-game)
 	- [Testing](#pruebas)
@@ -315,7 +315,7 @@ not depend on any concrete implementation, is in accordance with the **D** of th
 [^8]: **Design principles**: This is in accordance with the DRY (*Don't Repeat Yourself*) design principle. 
 
 <!-- TOC --><a name="contenedor-de-objetos-del-juego"></a>
-### Simplifying the game object container
+### Simplifying the game-object container
 
 Having refactored the code for the commands and for the game objects, we now turn our attention to the
 management of the game objects. As in the previous assignment, the game objects will be managed by the
@@ -496,6 +496,7 @@ Recall that after refactoring, the program should have exactly the same function
 error messages may need to be less precise) and should therefore pass the same system tests, even though the implementation now contains many more classes.
 
 The template that we provide you with includes classes called `tp1.Tests_V2_1` and `tp1.Tests_V2_1` which, like `tp1.Tests`, are classes of JUnit tests, the former containing the test cases for part I of this assignment and the latter containing test cases for the extensions implemented in part II of this assignment.
+
 
 
 
