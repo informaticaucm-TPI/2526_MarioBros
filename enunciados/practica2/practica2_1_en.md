@@ -219,7 +219,8 @@ main loop shown above is the following line assigning a value to the polymorphic
 Command command = CommandGenerator.parse(...);
 ```
 The key point is that the controller is generic: it simply knows how to handle objects that
-have a `parse` method and an `execute` method (it doesn't directly use the `helpText` method)
+have an `execute` method (it relies on the `CommandGenerator` knowing how to handle objects
+that have a `parse` method and, for the `help` command, a `helpText` method) 
 but does not know which concrete command is being executed nor anything about the result of
 that execution; the knowledge of what functionality corresponds to each
 command is contained in each concrete command class. It is this mechanism that facilitates the
@@ -497,6 +498,7 @@ Recall that after refactoring, the program should have exactly the same function
 error messages may need to be less precise) and should therefore pass the same system tests, even though the implementation now contains many more classes.
 
 The template that we provide you with includes classes called `tp1.Tests_V2_1` and `tp1.Tests_V2_1` which, like `tp1.Tests`, are classes of JUnit tests, the former containing the test cases for part I of this assignment and the latter containing test cases for the extensions implemented in part II of this assignment.
+
 
 
 
