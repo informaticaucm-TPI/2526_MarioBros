@@ -4,7 +4,7 @@
 	- [Refactoring the solution of the previous assignment](#refactorización-de-la-solución-de-la-práctica-anterior)
 		- [The command inheritance hierarchy](#patrón-command)
 		- [The game-object inheritance hierarchy](#herencia-y-polimorfismo)
-		- [Simplifying the Game object container](#contenedor-de-objetos-del-juego)
+		- [Simplifying the game-object container](#contenedor-de-objetos-del-juego)
 		- [Generalizing the interactions between game objects](#generalizacion-interacciones)
 		- [Interfaces implemented by the `Game` class](#interfaces-de-game)
 	- [Testing](#pruebas)
@@ -205,8 +205,8 @@ while (!game.isFinished()) {
 ```
 
 Basically, while the game is not finished (due to internal game reasons or to a user exit), the
-program reads the text entered by the user, parses it to obtain an object of class `Command`
-and then calls the `execute` method of this object to effect the functionality of the command
+program reads the text entered by the user, parses it to obtain an object implementing the `Command`
+interface and then calls the `execute` method of this object to effect the functionality of the command
 entered by the user and to update the view after doing so, if necessary. In the case where the
 input text does not correspond to any of the existing commands, the error message
 `Messages.UNKNOWN_COMMAND` is printed.
@@ -218,26 +218,28 @@ main loop shown above is the following line assigning a value to the polymorphic
 ```java
 Command command = CommandGenerator.parse(...);
 ```
-The key point is that the controller is generic: it only handles abstract commands and does not know
-which concrete command is being executed nor anything about the result of that execution; the
-knowledge of what functionality corresponds to each
+The key point is that the controller is generic: it simply knows how to handle objects that
+have an `execute` method (it relies on the `CommandGenerator` invoking a `parse` method and,
+for the `help` command, a `helpText` method on those same objects) 
+but does not know which concrete command is being executed nor anything about the result of
+that execution; the knowledge of what functionality corresponds to each
 command is contained in each concrete command class. It is this mechanism that facilitates the
 addition of new concrete commands with minimal changes to the existing code. 
 
 **The `CommandGenerator` class**. The `parse` method of this class is a static method
 which returns an instance of the concrete command class that corresponds to the text entered
 by the user. To this end, the `CommandGenerator` class has a static attribute containing a list
-of instances of the class `Command`, concretely, it contains exactly one instance of each of
-the existing command classes. The `parse` method of the `CommandGenerator` method traverses
-this list calling the `parse` method of each of its command class instances.
-If any of these `parse` methods returns a non-null value (which will be an instance of one
-of the command classes), the `parse` of the `CommandGenerator` returns this non-null value,
+of instances implementing the `Command` interface, concretely, it contains exactly one instance of 
+each of the existing concrete command classes. The `parse` method of the `CommandGenerator` method
+traverses this list calling the `parse` method of each object on it.
+If any of these `parse` methods returns a non-null value (which will be one of the concrete
+command classes), the `parse` of the `CommandGenerator` returns this non-null value,
 otherwise it returns the value `null`.
 
 The `CommandGenerator` contains another static method `commandHelp` that generates
 the output of the help command (so must be called by the `execute` method of the `HelpCommand`
 class). Like the `parse` command, it accomplishes its task by traversing the `AVAILABLE_COMMANDS`
-list but in this case invoking the `helpText()` method of each object in the list.
+list but in this case invoking the `helpText()` method of each object on the list.
 
 The following is a skeleton of this code:
 
@@ -315,7 +317,7 @@ not depend on any concrete implementation, is in accordance with the **D** of th
 [^8]: **Design principles**: This is in accordance with the DRY (*Don't Repeat Yourself*) design principle. 
 
 <!-- TOC --><a name="contenedor-de-objetos-del-juego"></a>
-### Simplifying the game object container
+### Simplifying the game-object container
 
 Having refactored the code for the commands and for the game objects, we now turn our attention to the
 management of the game objects. As in the previous assignment, the game objects will be managed by the
@@ -439,7 +441,7 @@ The `Game` class offers services to different parts of the program, namely:
 
 - *Model*: the game objects (part of the *Model*, as is the `Game` class itself) invoke those methods of the game, such as `isSolid(Position)`, `addPoints(int)` or `marioArrived()`, that concern interactions between game objects. Since these calls *to* the game from the game objects result from calls *by* the game to the game objects (via the container, usually as part of an update), they are referred to as *callbacks*.
 
-Notice that with the current implementation, nothing prevents the *model* invoking a method of `Game` that was designed for the *controller* to invoke, e.g. a game object invoking the `reset` method, or the *view* invoking a method of `Game` designed for the *model* to invoke, e.g. the game view invoking the `marioArrived` method, etc. In order for the compiler to detect such inconsistent invocations we can use interfaces to define *partial views* on the services offered by the `Game` class. To that end, we define the following three interfaces [^11]:
+Notice that with the current implementation, nothing prevents the *Model* invoking a method of `Game` that was designed for the *Controller* to invoke, e.g. a game object invoking the `reset` method, or the *View* invoking a method of `Game` designed for the *Model* to invoke, e.g. the game view invoking the `marioArrived` method, etc. In order for the compiler to detect such inconsistent invocations we can use interfaces to define *partial views* on the services offered by the `Game` class. To that end, we define the following three interfaces [^11]:
 
 - `GameWorld` to represent the *Model*'s internal view of the services offered by the `Game` class.
 
@@ -496,6 +498,12 @@ Recall that after refactoring, the program should have exactly the same function
 error messages may need to be less precise) and should therefore pass the same system tests, even though the implementation now contains many more classes.
 
 The template that we provide you with includes classes called `tp1.Tests_V2_1` and `tp1.Tests_V2_1` which, like `tp1.Tests`, are classes of JUnit tests, the former containing the test cases for part I of this assignment and the latter containing test cases for the extensions implemented in part II of this assignment.
+
+
+
+
+
+
 
 
 
