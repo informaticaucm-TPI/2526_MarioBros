@@ -1,0 +1,4 @@
+aob (1,1) Land
+addoBjEct (-1,-1) Land
+aO (2,2) Patata
+exit

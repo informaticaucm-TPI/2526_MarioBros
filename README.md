@@ -7,3 +7,5 @@
 - [Enunciado de la Práctica 2_1](./enunciados/practica2/practica2_1.md) ([English](./enunciados/practica2/practica2_1_en.md))
     
     - [Plantilla de la Práctica 2](https://github.com/informaticaucm-TPI/2526_MarioBros/releases/tag/practica2_plantilla)
+
+- [Enunciado de la Práctica 2_2](./enunciados/practica2/practica2_2.md) ([English](./enunciados/practica2/practica2_2_en.md))

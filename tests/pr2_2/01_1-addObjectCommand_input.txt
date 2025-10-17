@@ -1,0 +1,10 @@
+ao (12,2) Goomba LEFT
+
+ao (12,2) Goomba LEFT
+ao (12,2) Goomba RIGht
+
+
+ao (12,2) ED
+
+
+exit

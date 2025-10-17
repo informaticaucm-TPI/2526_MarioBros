@@ -1,0 +1,10 @@
+
+u
+a r r r r
+a r r r r
+reset -1
+
+reset
+
+
+exit
