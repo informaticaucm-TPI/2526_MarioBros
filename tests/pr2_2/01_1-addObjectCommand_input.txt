@@ -1,6 +1,9 @@
 ao (10,0) Goomba
 action up up up
 reset
+ao (9,1) Goomba
+action up up r
+reset
 ao (12,2) Goomba LEFT
 
 ao (12,2) Goomba LEFT
