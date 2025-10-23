@@ -140,7 +140,7 @@ Ayuda: adds to the board the object given by object_description
 <!-- TOC --><a name="draw-map"></a>
 ### Nuevo nivel para crear escenarios
 
-Para poder crear escenarios desde cero usando este comando, habrá que crear un nuevo nivel ``-1`` en el juego. Este nivel será un mapa vacío con 3 vidas, 100 unidades de tiempo y 0 puntos.
+Para poder crear escenarios desde cero usando este comando, habrá que crear un nuevo nivel ``-1`` en el juego. Este nivel será un mapa vacío con 3 vidas, 100 unidades de tiempo y 0 puntos. Este mapa, a diferencia de los anteriormente vistos, incluye las vidas. Por tanto, cuando se resetee este mapa, también se reseteará el número de vidas a 3. 
 ![mapa-1](imgs/mapa-1.png)
 
 <!-- TOC --><a name="#box-mushroom"></a>
