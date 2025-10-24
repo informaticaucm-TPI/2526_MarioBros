@@ -22,7 +22,7 @@
 
 **Preguntas Frecuentes**: Como es habitual que tengáis dudas (es normal) las iremos recopilando en este [documento de preguntas frecuentes](../faq.md). Para saber los últimos cambios que se han introducido [puedes consultar la historia del documento](https://github.com/informaticaucm-TPI/2425-Lemmings/commits/main/enunciados/faq.md).
 
-En esta práctica vamos a extender el código con nuevas funcionalidades. El principal objetivo de esta práctica será conseguir aplicar a los lemmings otros roles, de modo que puedan interactuar con su entorno de otras formas.
+En esta práctica vamos a extender el código con nuevas funcionalidades. El principal objetivo de esta práctica será añadir nuevos objetos y nuevos comandos al juego. 
 
 Antes de comenzar, tened en cuenta la **advertencia**:
 
@@ -131,7 +131,7 @@ Ayuda: adds to the board the object given by object_description
 ````
 
 - El argumento `<object_description>` del comando es obligatorio y se corresponde con una línea de objeto que deberá seguir el formato indicado al comienzo de esta sección.
-- Por ejemplo, al ejecutar `ao (14,3) Land` se añadirá un objeto `Land` en `(14,3)`. Y al ejecutar ``aO (13,3) Goomba RIGHT`` se añadirá en la posición ``(2,3)`` un objeto ``Goomba`` cuya dirección de paso es ``RIGHT``.  
+- Por ejemplo, al ejecutar `ao (14,3) Land` se añadirá un objeto `Land` en `(14,3)`. Y al ejecutar ``aO (13,3) Goomba RIGHT`` se añadirá en la posición ``(13,3)`` un objeto ``Goomba`` cuya dirección de paso es ``RIGHT``.  
 - Si la descripción del objeto no se puede parsear o la posición dada está fuera del tablero, el comando mostrará el siguiente mensaje de error: ``Invalid game object: <stringObjeto>``.
 - Para parsear el comando o lanzar el mensaje de error te resultarán de utilidad los siguientes métodos:
 	- `Arrays.copyOfRange(words, from, to)`: devuelve una copia del array `words` desde el índice `from` (incluido) a `to` (excluido).
