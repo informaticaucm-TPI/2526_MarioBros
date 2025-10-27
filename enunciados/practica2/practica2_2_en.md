@@ -98,7 +98,7 @@ which we clarify with the following examples of valid strings:
 In addition, abbreviations can be used for the game objects (``M``, ``G``, ``Gr`` y ``ED`` for ``Mario``, ``Goomba``, ``Ground``  and ``ExitDoor`` respectively), for the movement directions (``L``, ``R`` and `S` for ``LEFT``, ``RIGHT`` and `STOP` respectively) and for the sizes of Mario (``B`` and ``S`` for ``BIG`` and ``SMALL`` respectively).
 
 [^1]: Even if Mario is in the air in the position provided, his direction of movement is needed in order to draw him correctly;
-it will also determine his direction of movement when he reaches the ground.
+it will also determine his movement when he reaches the ground.
 
 
 <!-- TOC --><a name="factory"></a>
@@ -232,5 +232,6 @@ add these objects at the start of level `1` using the `addObject` command.
 ## Submission
 
 ... to be added
+
 
 
