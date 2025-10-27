@@ -37,7 +37,7 @@ to the game. But first a **warning**:
    `GameObject` subclass); such a solution is even worse than using `instanceof` or `getClass` since it is simply a clumsier, more
    verbose, way of identifying the dynamic type of game objects.
 
-<!-- TOC --><a name="command-setRoleCommand_parachuter"></a>
+<!-- TOC --><a name="AddObjectCommand-y-factoría-de-objetos"></a>
 ## The `addObject` command and the game object factory
 
 In this section we create a new command, `addObject` represented by the `AddObjectCommand` class, which enables the
@@ -232,3 +232,4 @@ add these objects at the start of level `1` using the `addObject` command.
 ## Submission
 
 ... to be added
+
