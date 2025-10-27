@@ -1,4 +1,4 @@
- Table of contents
+## Table of contents
 
 - [Assignment 2 - Part II: Mario Extended](#práctica-2---parte-ii-mario-extended)
 - [The `addObject` command and the game-object factory](#AddObjectCommand-y-factoría-de-objetos)
@@ -232,6 +232,7 @@ add these objects at the start of level `1` using the `addObject` command.
 ## Submission
 
 ... to be added
+
 
 
 
