@@ -164,7 +164,7 @@ Examples of use of this command:
 
 [^2]: A *utility class* is one that contains only static methods, which therefore never needs to be instantiated.
 
-
+<!-- TOC --><a name="draw-map"></a>
 ### Creating maps using the `addObject` command
 
 To enable the player to create new maps using the `addObject` command, we define a new level number ``-1`` corresponding to
@@ -232,4 +232,5 @@ add these objects at the start of level `1` using the `addObject` command.
 ## Submission
 
 ... to be added
+
 
