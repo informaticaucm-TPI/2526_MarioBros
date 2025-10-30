@@ -51,7 +51,7 @@ En la práctica anterior el usuario podía realizar varias acciones: pedir ayuda
 
 En el patrón *Command* van a intervenir las siguientes entidades, las cuales iremos explicando en varios pasos, a medida que vayamos profundizando en los detalles:
 
-- La interfaz `Command` define los métodos públicos de cualquier comando: `execute`, `pase` y `helpText`.
+- La interfaz `Command` define los métodos públicos de cualquier comando: `execute`, `parse` y `helpText`.
 - La clase `AbstractCommand` es una clase abstracta que encapsula la funcionalidad común de todos los comandos concretos. Tiene atributos para almacenar el nombre (`name`), el atajo (`shortcut`), sus detalles (`details`) y su ayuda (`help`). Esos atributos son inicializados en su constructor y se cuenta con métodos *getters* para alguno de ellos.
 - La clase `NoParamsCommand` es una clase abstracta que hereda de `AbstractCommand` y que sirve de base para todos los comandos que no tienen parámetros. Más adelante añadiremos comandos que sí tienen parámetros y que, por lo tanto, no heredarán de `NoParamsCommand`.
 - Los comandos concretos representan las acciones que puede realizar el usuario: `HelpCommand`, `ExitCommand`... 
