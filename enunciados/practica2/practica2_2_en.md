@@ -35,10 +35,10 @@ to the game. But first a **warning**:
     objects, nor a reference to itself, via `this`, in order to provide access to such a list.
     + The term "export" here refers to giving access to an object by one of the following two means: defining a method that returns 
       it or passing it as an argument in an invocation of a method of another class.
-- the use of `instanceof` or `getClass` (apart from in an equals method), since:
+- Using `instanceof` or `getClass` (apart from in an equals method), since:
   * identifying the dynamic type of objects is simply a way of avoiding the use of
     polymorphism and dynamic binding, i.e. of avoiding the use of OOP.
-- the use of a *DIY instanceof* (e.g. each subclass of `GameObject` has a set of methods `isX`, one for each concrete subclass of
+- Using a *DIY instanceof* (e.g. each subclass of `GameObject` has a set of methods `isX`, one for each concrete subclass of
   `GameObject`, where the method `isX` returns `true` in the concrete `GameObject` subclass `X` and `false` in any other concrete
    `GameObject` subclass).
    * Such a solution is even worse than using `instanceof` or `getClass` since it is simply a clumsier, more verbose, way
@@ -239,6 +239,7 @@ add these objects at the start of level `1` using the `addObject` command.
 ## Submission
 
 ... to be added
+
 
 
 
