@@ -25,17 +25,26 @@
 In this assignment, we will extend the code with new functionality. The principle objective is to add new commands and new game objects
 to the game. But first a **warning**:
 
-**IMPORTANT**: Any of the following, on its own, is sufficient reason to fail:
+**IMPORTANT**: Any of the following serious errors, on its own, is sufficient reason to fail the assignment (**and to fail the exam if you commit such errors in the programming exam**):
 
-- breaking encapsulation (so all attributes must be private and a method cannot return an object that is a value of an attribute unless
-  that object is immutable or unless its type is an interface such as `GameItem` that severely restricts access to it),
-- the use of methods that return lists,
-- the use of `instanceof` or `getClass`, since identifying the dynamic type of objects is simply a way of avoiding the use of
-  polymorphism and dynamic binding, i.e. of avoiding the use of OOP.
+- breaking encapsulation, so:
+  * all attributes must be private,
+  * a method cannot return an object that is the value of an attribute, unless that object is immutable or unless its type is
+    an interface such as `GameItem` that severely restricts access to it; in particular, a method of `GameObjectContainer`
+    class cannot return a list of game objects (nor can it return a reference to the owning object, i.e. `this`, in order to
+    provide access to such a list),
+  * an object that is the value of an attribute cannot be used as an argument to a method call, unless that object is immutable
+    or unless its type is an interface such as `GameItem` that severely restricts access to it; in particular, a list of game
+    objects (or a reference to the owning object, i.e. `this`) cannot be used as a an argument to a method call made in a
+    method of the `GameObjectContainer` class.
+- the use of `instanceof` or `getClass` (apart from in an equals method), since
+  * identifying the dynamic type of objects is simply a way of avoiding the use of
+    polymorphism and dynamic binding, i.e. of avoiding the use of OOP.
 - the use of a *DIY instanceof* (e.g. each subclass of `GameObject` has a set of methods `isX`, one for each concrete subclass of
   `GameObject`, where the method `isX` returns `true` in the concrete `GameObject` subclass `X` and `false` in any other concrete
-   `GameObject` subclass); such a solution is even worse than using `instanceof` or `getClass` since it is simply a clumsier, more
-   verbose, way of identifying the dynamic type of game objects.
+   `GameObject` subclass)
+   * such a solution is even worse than using `instanceof` or `getClass` since it is simply a clumsier, more verbose, way
+     of identifying the dynamic type of game objects.
 
 <!-- TOC --><a name="AddObjectCommand-y-factoría-de-objetos"></a>
 ## The `addObject` command and the game object factory
@@ -232,6 +241,7 @@ add these objects at the start of level `1` using the `addObject` command.
 ## Submission
 
 ... to be added
+
 
 
 
