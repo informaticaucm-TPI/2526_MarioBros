@@ -29,7 +29,7 @@ to the game. But first a **warning**:
 
 - Breaking encapsulation, so:
   * all attributes must be private,
-  * a class cannot export an object that is the value of one of its attribute, unless the exported object is immutable
+  * a class cannot export an object that is the value of one of its attributes, unless the exported object is immutable
     or unless its type is an interface such as `GameItem` that severely restricts access to it; in particular, the
     `GameObjectContainer` class cannot export an object of type `GameObject` or one of its subtypes, nor a list of game
     objects, nor a reference to itself, via `this`, in order to provide access to such a list.
@@ -239,6 +239,7 @@ add these objects at the start of level `1` using the `addObject` command.
 ## Submission
 
 ... to be added
+
 
 
 
