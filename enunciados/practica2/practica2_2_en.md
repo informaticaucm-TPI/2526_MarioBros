@@ -37,13 +37,13 @@ to the game. But first a **warning**:
     or unless its type is an interface such as `GameItem` that severely restricts access to it; in particular, a list of game
     objects (or a reference to the owning object, i.e. `this`) cannot be used as a an argument to a method call made in a
     method of the `GameObjectContainer` class.
-- the use of `instanceof` or `getClass` (apart from in an equals method), since
+- the use of `instanceof` or `getClass` (apart from in an equals method), since:
   * identifying the dynamic type of objects is simply a way of avoiding the use of
     polymorphism and dynamic binding, i.e. of avoiding the use of OOP.
 - the use of a *DIY instanceof* (e.g. each subclass of `GameObject` has a set of methods `isX`, one for each concrete subclass of
   `GameObject`, where the method `isX` returns `true` in the concrete `GameObject` subclass `X` and `false` in any other concrete
-   `GameObject` subclass)
-   * such a solution is even worse than using `instanceof` or `getClass` since it is simply a clumsier, more verbose, way
+   `GameObject` subclass).
+   * Such a solution is even worse than using `instanceof` or `getClass` since it is simply a clumsier, more verbose, way
      of identifying the dynamic type of game objects.
 
 <!-- TOC --><a name="AddObjectCommand-y-factoría-de-objetos"></a>
@@ -241,6 +241,7 @@ add these objects at the start of level `1` using the `addObject` command.
 ## Submission
 
 ... to be added
+
 
 
 
