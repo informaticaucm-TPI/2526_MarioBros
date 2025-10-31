@@ -47,7 +47,7 @@ to the game. But first a **warning**:
 [^1]: With regard to the second point, notice that in the generic interaction mechanism
 described in part I of this assignment, the type of the parameter of the methods
 `doInteractions` of the `GameObjectContainer` class and `interactWith` of the `GameItem`
-interface is `GameItem`, not `GameObject`.
+interface is `GameItem`, not `GameObject` nor a subtype of `GameObject`.
 
 <!-- TOC --><a name="AddObjectCommand-y-factoría-de-objetos"></a>
 ## The `addObject` command and the game object factory
@@ -244,6 +244,7 @@ add these objects at the start of level `1` using the `addObject` command.
 ## Submission
 
 ... to be added
+
 
 
 
