@@ -34,7 +34,7 @@ to the game. But first a **warning**:
     `GameObjectContainer` class cannot export an object of type `GameObject` or one of its subtypes, nor a list of game
     objects, nor a reference to itself, via `this`, in order to provide access to such a list.
     + The term "export" here refers to giving access to an object by one of the following two means: defining a method that returns 
-      it or passing it as an argument in an invocation of a method of another class.
+      it or passing it as an argument in an invocation of a method of another class [^1].
 - Using `instanceof` or `getClass` (apart from in an equals method), since:
   * identifying the dynamic type of objects is simply a way of avoiding the use of
     polymorphism and dynamic binding, i.e. of avoiding the use of OOP.
@@ -43,6 +43,11 @@ to the game. But first a **warning**:
    `GameObject` subclass).
    * Such a solution is even worse than using `instanceof` or `getClass` since it is simply a clumsier, more verbose, way
      of identifying the dynamic type of game objects.
+
+[^1]: With regard to the second point, notice that in the generic interaction mechanism
+described in part I of this assignment, the type of the parameter of the methods
+`doInteractions` of the `GameObjectContainer` class and `interactWith` of the `GameItem`
+interface is `GameItem`, not `GameObject`.
 
 <!-- TOC --><a name="AddObjectCommand-y-factoría-de-objetos"></a>
 ## The `addObject` command and the game object factory
@@ -74,7 +79,7 @@ which we clarify with the following examples of valid strings:
   represents a `Mario` object
 
   - whose current position is row 1, column 2,
-  - whose current direction of movement is left-to-right, the default value of this attribute, the other possible values being `LEFT` and `STOP` [^1],
+  - whose current direction of movement is left-to-right, the default value of this attribute, the other possible values being `LEFT` and `STOP` [^2],
   - whose current size is `BIG` (i.e. for whom the value of `isBig` is `true`), the default value of this attribute, the other possible value being `SMALL`.
 
   The existence of default values means that `(1,2) MARIO` represents the same object as the above string and, for example, `(1,2) MARIO LEFT` represents
@@ -104,7 +109,7 @@ which we clarify with the following examples of valid strings:
   
 In addition, abbreviations can be used for the game objects (``M``, ``G``, ``Gr`` y ``ED`` for ``Mario``, ``Goomba``, ``Ground``  and ``ExitDoor`` respectively), for the movement directions (``L``, ``R`` and `S` for ``LEFT``, ``RIGHT`` and `STOP` respectively) and for the sizes of Mario (``B`` and ``S`` for ``BIG`` and ``SMALL`` respectively).
 
-[^1]: Even if Mario is in the air in the position provided, his direction of movement is needed in order to draw him correctly;
+[^2]: Even if Mario is in the air in the position provided, his direction of movement is needed in order to draw him correctly;
 it will also determine his movement when he reaches the ground.
 
 
@@ -163,13 +168,13 @@ Examples of use of this command:
 
 *Hints*
 - In the `parse` method of the `AddObjectCommand` class, you may wish to use the method `copyOfRange(words, from, to)` of the
-  `java.util.Arrays` utility class [^2], which returns a copy of the part of the array `words` that starts at index `from`
+  `java.util.Arrays` utility class [^3], which returns a copy of the part of the array `words` that starts at index `from`
   (inclusive) and finishes at index `to` (exclusive).
 - In the `run` method of the controller, you may wish to use the method `join(separator, words)` of the `String` class,
   which concatenates the strings of the array `words` adding the character string `separator` between each pair of elements 
   of `words` (use `" "` for the separator).
 
-[^2]: A *utility class* is one that contains only static methods, which therefore never needs to be instantiated.
+[^3]: A *utility class* is one that contains only static methods, which therefore never needs to be instantiated.
 
 <!-- TOC --><a name="draw-map"></a>
 ### Creating maps using the `addObject` command
@@ -239,6 +244,7 @@ add these objects at the start of level `1` using the `addObject` command.
 ## Submission
 
 ... to be added
+
 
 
 
