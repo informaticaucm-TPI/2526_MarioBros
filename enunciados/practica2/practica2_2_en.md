@@ -27,7 +27,7 @@ to the game. But first a **warning**:
 
 **IMPORTANT**: Any of the following serious errors, on its own, is sufficient reason to fail the assignment (**and to fail the exam if you commit such errors in the programming exam**):
 
-- breaking encapsulation, so:
+- Breaking encapsulation, so:
   * all attributes must be private,
   * a class cannot export an object that is the value of one of its attribute, unless the exported object is immutable
     or unless its type is an interface such as `GameItem` that severely restricts access to it; in particular, the
@@ -239,6 +239,7 @@ add these objects at the start of level `1` using the `addObject` command.
 ## Submission
 
 ... to be added
+
 
 
 
