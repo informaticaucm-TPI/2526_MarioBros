@@ -29,12 +29,15 @@ to the game. But first a **warning**:
 
 - Breaking encapsulation, so:
   * all attributes must be private,
-  * a class cannot export an object that is the value of one of its attributes, unless the exported object is immutable
-    or unless its type is an interface such as `GameItem` that severely restricts access to it; in particular, the
+  * a class cannot export data that is `private`, in particular, an object that is the value of one of its (private)
+    attributes or an object that is referenced by the value of one of its (private) attributes, unless the exported
+    object is immutable or unless its type is an interface such as `GameItem` that severely restricts access to it;
+    in particular, the
     `GameObjectContainer` class cannot export an object of type `GameObject` or one of its subtypes, nor a list of game
-    objects, nor a reference to itself, via `this`, in order to provide access to such a list.
-    + The term "export" here refers to giving access to an object by one of the following two means: defining a method that returns 
-      it or passing it as an argument in an invocation of a method of another class [^1].
+    objects, nor a reference to itself, via `this`, in order to provide access to such a list. Note that a method
+    of the `GameObjectContainer` class that is `private` is not exporting anything.
+    + The term "export" here refers to giving access to an object either by defining a non-private method that returns 
+      it or by passing it as an argument in an invocation of a method of another class [^1].
 - Using `instanceof` or `getClass` (apart from in an equals method), since:
   * identifying the dynamic type of objects is simply a way of avoiding the use of
     polymorphism and dynamic binding, i.e. of avoiding the use of OOP.
@@ -244,6 +247,7 @@ add these objects at the start of level `1` using the `addObject` command. Examp
 ## Submission
 
 ... to be added
+
 
 
 
