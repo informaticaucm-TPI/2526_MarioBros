@@ -233,7 +233,7 @@ by a grey background, if the box is empty.
 
 To test these two extensions, we suggest you create a level `2` which is the same as level `1` except for a box in position
 `(9,4)` and two mushrooms in positions `(12,8)` y `(2,20)` (using the format `(fila,columna)`). Alternatively, you can simply
-add these objects at the start of level `1` using the `addObject` command.
+add these objects at the start of level `1` using the `addObject` command. Examples of the external representation for boxes to be used with the `addObject` command are the following: `"(3,6) Box"`, `"(3,5) Box Full"`, `"(3,4) Box Empty"` where the latter represents an empty box and the other two, a full box (i.e. the default is `Full`). The abbreviations `"F"` and `"E"` can be used for `"Full"` and `"Empty"` respectively.
 
 <!-- TOC --><a name="pruebas"></a>
 ## Testing
@@ -244,6 +244,7 @@ add these objects at the start of level `1` using the `addObject` command.
 ## Submission
 
 ... to be added
+
 
 
 
