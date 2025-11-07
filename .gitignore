@@ -30,3 +30,6 @@ replay_pid*
 
 # Other files
 *.bak
+*output.txt
+
+.settings/org.eclipse.jdt.core.prefs
