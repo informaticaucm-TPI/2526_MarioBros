@@ -179,7 +179,7 @@ Ten en cuenta que también puedes probar dichos objetos a través del comando de
 <!-- TOC --><a name="pruebas"></a>
 ## Pruebas
 
-Junto con este enunciado se acaban de añadir al GitHub las pruebas de estas extensiones (clase `tp1.Tests_V2_2`). Recuerda que tú código debe pasarlas. Para realizar estas pruebas, incluye a tu proyecto dicho fichero y la carpeta `tests/pr2_2`
+Junto con este enunciado se acaban de añadir al GitHub las pruebas de estas extensiones (clase `tp1.Tests_V2_2.java`). Recuerda que tú código tras dicha extensión debe pasar tanto las purebas de esta extensión como las pruebas de la refactoriación (clase `tp1.Tests_V2_1_2.java`). Para realizar estas pruebas, incluye a tu proyecto dichos ficheros y la carpeta `tests/pr2_2`
 
 
 <!-- TOC --><a name="entrega"></a>

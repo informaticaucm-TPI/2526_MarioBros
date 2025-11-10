@@ -1,4 +1,4 @@
-package tp1;
+package tp1.tests;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -80,34 +80,33 @@ public final class TestsUtils {
         return result;
     }
 	
-    private static boolean compareOutput(Path expectedPath, Path actualPath) throws FileNotFoundException, IOException {
-		boolean same = true;
+    private static void checkOutput(Path expectedPath, Path actualPath) throws FileNotFoundException, IOException {
 		try (BufferedReader expected = new BufferedReader(new FileReader(expectedPath.toFile()));
 				BufferedReader actual = new BufferedReader(new FileReader(actualPath.toFile()))) {
 
 			String expectedLine = expected.readLine();
 			String actualLine = actual.readLine();
 			int lineNumber = 1;
-			while (same && expectedLine != null && actualLine != null) {
-				same = expectedLine.equals(actualLine) ||
-					   areLinesEquivalent(expectedLine,actualLine); // ORDER not important
-				if (!same) {
-						String lineMessage = "Line: %d%n".formatted(lineNumber);
-						String expectedMessage = "Expected: %s%n".formatted(expectedLine);
-						String actualMessage = "Actual  : %s%n".formatted(actualLine);
-						System.out.println(lineMessage + expectedMessage + actualMessage);
-						
-						fail(lineMessage + expectedMessage + actualMessage);
-				}
+			while (expectedLine != null && actualLine != null &&
+					   ( expectedLine.equals(actualLine)
+					   || areLinesEquivalent(expectedLine,actualLine))) { // ORDER not important
 
 				expectedLine = expected.readLine();
 				actualLine = actual.readLine();
 				lineNumber++;
 			}
-
-			same = same && expectedLine == null && actualLine == null;
+			
+			if (expectedLine != null || actualLine != null) {
+				String lineMessage = "Line: %d%n".formatted(lineNumber);
+				String expectedMessage = "Expected: %s%n".formatted(
+						expectedLine == null? "EOF":expectedLine);
+				String actualMessage = "Actual  : %s%n".formatted(
+						actualLine == null? "EOF":actualLine);
+				System.out.println(lineMessage + expectedMessage + actualMessage);
+				
+				fail(lineMessage + expectedMessage + actualMessage);
+     		}
 		}
-		return same;
 	}
 
     public static void parameterizedTest(Path input, Path expected, Path output, String[] args) {
@@ -123,16 +122,14 @@ public final class TestsUtils {
 			System.setOut(oldOut);
 			System.setIn(oldIn);
 
-			if (!compareOutput(expected, output)) {
-				fail();
-			}
+			checkOutput(expected, output);
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			fail();
+			fail("File not found!");
 		} catch (IOException e1) {
 			e1.printStackTrace();
-			fail();
+			fail("IOExpception");
 		}
 	}
 }
