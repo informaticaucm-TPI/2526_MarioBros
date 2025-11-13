@@ -1,0 +1,44 @@
+reset 2
+u
+save testSave1_output.txt
+u
+reset
+
+
+load testSave1_output.txt
+addObject (11,6) Box Full
+addObject (9,1) Box Full
+a u u 
+u
+Update
+addObject (3,4) Land
+save testSave1_output.txt
+
+load testSave1_output.txt
+a r r
+u
+reset
+a u
+
+r -1
+ao (1,2) mario Right Big
+ao (12,2) Goomba LEFT
+
+ao (12,2) Goomba LEFT
+ao (12,2) Goomba RIGht
+ao (14,2) LAND
+save testSave2_output.txt
+action DoWN
+
+load testSave2_output.txt
+Update
+uPdate
+upDate
+action Down
+ao (14,3) Land
+ao (10,3) Goomba
+ao (09,4) Goomba RIGht
+
+a u r u r u
+
+exit

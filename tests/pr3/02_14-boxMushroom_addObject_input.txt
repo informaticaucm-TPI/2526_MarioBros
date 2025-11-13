@@ -1,0 +1,13 @@
+ao (12,1) Goomba L
+ao (12,1) Goomba L
+
+ao (12,1) Goomba L
+
+ao (12,2) MU L
+ao (12,3) Mushroom L
+
+
+
+
+reset -1
+exit

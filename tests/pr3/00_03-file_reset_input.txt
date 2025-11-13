@@ -1,0 +1,8 @@
+load conf_0
+
+reset
+
+
+reset 1
+
+exit

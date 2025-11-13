@@ -1,4 +1,4 @@
-package tp1.tests;
+package tp1;
 
 import static org.junit.jupiter.api.Assertions.fail;
 

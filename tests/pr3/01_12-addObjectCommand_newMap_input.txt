@@ -1,0 +1,13 @@
+reset -1
+ao (14,0) lAnD
+Ao (14,1) l
+addoBjEct (14,2) L
+addObject (14,3) ExitDoor
+addObject (13,0) Land
+ao (13,3) Mario L S
+a u u r
+
+
+
+
+exit

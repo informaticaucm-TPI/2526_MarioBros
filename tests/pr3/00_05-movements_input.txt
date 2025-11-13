@@ -1,0 +1,45 @@
+a u u u u u u
+a d
+a r r r r l
+reset
+update
+a right right left down
+a u l
+a d
+reset
+a up right u uP down
+a down
+a u u u u r
+a l u l u u u r
+a d
+a u u r u l u r r d
+reset
+a u u r u u r
+u
+u
+u
+a d
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Update
+
+
+exit

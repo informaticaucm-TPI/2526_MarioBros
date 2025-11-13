@@ -1,0 +1,36 @@
+doesNotExist
+n
+help with tooMuchArgs
+exit with tooMuchArgs
+update extraArgs
+reset potatos
+reset potato tooMuchArgs
+reset 1 potato
+reset 135 potato
+reset -2
+rEsEt 134
+action
+action unknownDir
+action unknownDir anotherUnknownDir
+addObject
+aO (2,2)
+aO (2,2) Land extraArgs
+addObject (123,2) Land
+addObject (a,4) Land
+addObject (1,2) Goomba NORTH
+addObject (1,4) Goomba UP
+addObject (1,4) Goomba RIGHT extraArgs
+addObject (1,8) Patata
+addObject (2,9) Box UP
+addObject (2,9) Box Empty extraArgs
+addObject (2,9) Box Full extraArgs
+ADDOBJECT (3,4) mARIO nORMAL
+ADDOBJECT (3,4) mARIO RiGHT nORMAL
+addObject (3,5) Mario Right Big extraArgs
+addObject (3,5) Mario Right Small extraArgs
+s
+l
+save fileName extraArgs
+load fileName extraArgs
+load unknownFile
+exit

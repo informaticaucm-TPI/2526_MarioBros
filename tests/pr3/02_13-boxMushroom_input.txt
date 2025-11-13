@@ -1,0 +1,20 @@
+r 2
+a r r r r
+a s
+a u u u
+
+a d
+a l u u u u l
+a u r
+a d
+
+a r r r r
+
+a u r u r u r
+a d
+a u r
+
+
+a r
+a d
+exit

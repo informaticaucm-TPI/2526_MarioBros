@@ -1,0 +1,50 @@
+r -1
+ao (14,0) Land
+ao (14,1) Land
+ao (14,2) Land
+ao (14,3) Land
+ao (12,2) Box
+ao (12,3) Box empty
+ao (09,2) Box
+ao (13,0) Mario Right Big
+ao (13,3) Goomba
+
+a u
+Update
+a u u r
+a r
+a u
+a u 
+a l l l d
+a u r u r u r u
+a down
+ao (9,3) G
+a u
+a down stop
+update
+a u u l
+a d
+ao (9,3) G
+a u
+a d
+ao (9,3) Land
+a u u u u
+a l l l d
+Update
+ao (13,1) Mushroom
+uPdate
+upDate
+updAte
+ao (12,1) Land
+updaTe
+updatE
+a r r r r
+a d
+a u r u r u r u r
+ao (13,0) Mario
+Update
+uPdate
+a u u r r r
+a d
+a d r r r r d
+e
