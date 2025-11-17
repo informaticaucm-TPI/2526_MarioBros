@@ -63,10 +63,10 @@ Command > [DEBUG] Executing: action
 [ERROR] Error: Incorrect parameter number
 Command > [DEBUG] Executing: action unknownDir
 
-[ERROR] Error: Unknown command: action unknownDir
+[ERROR] Error: Incorrect 'action command', because the action list is empty (all actions are unknown).
 Command > [DEBUG] Executing: action unknownDir anotherUnknownDir
 
-[ERROR] Error: Unknown command: action unknownDir anotherUnknownDir
+[ERROR] Error: Incorrect 'action command', because the action list is empty (all actions are unknown).
 Command > [DEBUG] Executing: addObject
 
 [ERROR] Error: Incorrect parameter number
