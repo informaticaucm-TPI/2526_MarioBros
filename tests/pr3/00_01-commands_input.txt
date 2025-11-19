@@ -25,5 +25,9 @@ r
 
 ao (12,2) ED
 
-
+r -1
+ao (1,2) M
+r -1
+ao (1,2) M Left
+ao (2,4) G
 exit
