@@ -224,7 +224,7 @@ We now enable some of the game elements to move and implement the updating of th
 #### The `update()` method of the `Goomba` class
 
 The behaviour of a `Goomba` object is completely automatic, i.e. cannot be changed by commands.
-- If it has a solid object underneath, it advances (i.e. moves horizontally in its currently-set direction, its inital movement being from right to left) one cell per cycle.
+- If it has a solid object underneath, it advances (i.e. moves horizontally in its currently-set direction, its initial movement being from right to left) one cell per cycle.
 - If it collides with a solid object or with the side-wall of the board, it starts to move in the opposite direction.
 - If it does not have a solid object underneath, it falls (moves vertically down one cell per cycle) and continues falling each cycle until either it encounters a solid object underneath it, or it leaves the board via the bottom edge; in the latter case, it dies and must be removed from the game (i.e. deleted from the list of `Goomba` objects).
 
