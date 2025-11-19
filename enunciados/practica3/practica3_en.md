@@ -258,7 +258,7 @@ about errors is also what is required if it is to be written to an error log.
 
 Finally, notice that, usually, both the parsing and the execution of commands with parameters 
 throw more types of exception than do the parsing and execution of commands without parameters.
-In the case of the `action` command, for example, the parsing of its parameters may generate
+In the case of the `addObject` command, for example, the parsing of its parameters may generate
 `CommandParseException`s, or system exceptions that we wrap in `CommandParseException`s, and its
 execution in the model part of the application may generate exceptions that we wrap in
 `CommandExecuteException`s.
@@ -490,4 +490,5 @@ Note also that the parsing of the position part of the external representation, 
 carried out in the game-object factory, may throw `PositionParseException`.
 
 [^6]: This is in accordance with the behaviour of library methods such as [Integer.valueOf](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#valueOf-java.lang.String- "Integer.valueOf"). 
+
 
