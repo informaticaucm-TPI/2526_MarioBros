@@ -706,8 +706,9 @@ then a `BufferedReader` from an initial configuration stored in an
 attribute (called, say, `state`); this could be done with an instruction similar to the
 following: `BufferedReader inStream =
     new BufferedReader(
-        new StringReader(state.getTime()+" "+state.getPoints()+" "+state.getLives()+System.lineSeparator()
+        new StringReader(state.getTime() + " " + state.getPoints() + " " + state.getLives() + System.lineSeparator()
                           + String.join(System.lineSeparator(), state.getGameObjects() ))`
+
 
 
 
