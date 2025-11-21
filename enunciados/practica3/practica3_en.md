@@ -542,6 +542,7 @@ interface and the `GameStatus` interface.
 As a general principle, reading from a file must never:
 1. cause a program to crash,
 2. leave it in an incoherent state
+   
 How do we accomplish this?
 1. Catching all exceptions that could be thrown when reading from a file ensures that
   the program cannot crash. If the load fails, the program can handle the exception,
@@ -638,6 +639,7 @@ Available commands:
    [l]oad <fileName>: load a state of the game from the text file <fileName>
    ...
 ```
+
 
 
 
