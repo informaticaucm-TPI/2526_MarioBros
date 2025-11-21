@@ -364,8 +364,9 @@ representation currently produced by the view is not a suitable format for seria
 deserialization of this format would be a rather complicated enterprise. We therefore
 need to define a text-serialized format, in which the state of the game is represented as
 the global values followed by a sequence of game elements, each of which is represented as
-a sequence of values. For the sequence of game elements, we can use the external representation
-defined for use as the format of the argument of the `addObject` command.
+a sequence of words in a specified format. For this specified format, we can use the external
+representation introduced in the previous assignment to be used with the `addObject` command
+(as the format for its argument).
 
 ### Serialization format
 
@@ -639,6 +640,7 @@ Available commands:
    [l]oad <fileName>: load a state of the game from the text file <fileName>
    ...
 ```
+
 
 
 
