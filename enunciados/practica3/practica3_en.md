@@ -412,8 +412,8 @@ This method, to be called by the `execute` method of the `SaveCommand` class, ca
 by simply calling the `toString` method of the `game` which calls the `toString` method of the
 `container`, which calls the `toString` method of each of the game objects and then writes
 them to file [^4]. Exceptions occuring during the execution of the `save` method should be
-wrapped in a `GameSaveException`, a subclass of `GameModelException` (which must then be caught
-and wrapped in a `CommandExecuteException`) [^5].
+caught and wrapped in a `GameSaveException`, a subclass of `GameModelException` (which must then
+be caught and wrapped in a `CommandExecuteException`) [^5].
 
 The output of the `help` command should now include details about the `save` command:
 ```
@@ -644,6 +644,7 @@ Available commands:
    [l]oad <fileName>: load a state of the game from the text file <fileName>
    ...
 ```
+
 
 
 
