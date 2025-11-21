@@ -488,7 +488,6 @@ such errors.
 Note that the behaviour of the `reset` command will need to be adapted to the existence
 of the `load` command since reset should mean return to the last loaded state.
 
-
 <!-- inner TOC --><a name="game-object-factory"></a>
 ### Exceptions in the game object factory
 
@@ -645,6 +644,11 @@ Available commands:
    [l]oad <fileName>: load a state of the game from the text file <fileName>
    ...
 ```
+
+### Examples of errors that may occur during the loading of a file
+
+*To be added*
+
 <!-- TOC --><a name="reset-load-game"></a>
 ## Adapting the `reset` method of the `Game` class
 
@@ -709,6 +713,7 @@ following: `BufferedReader inStream =
     new BufferedReader(
         new StringReader(state.getTime() + " " + state.getPoints() + " " + state.getLives() + System.lineSeparator()
                           + String.join(System.lineSeparator(), state.getGameObjects() ))`
+
 
 
 
