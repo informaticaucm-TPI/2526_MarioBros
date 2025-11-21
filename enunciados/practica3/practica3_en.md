@@ -648,23 +648,23 @@ Available commands:
 <!-- TOC --><a name="reset-load-game"></a>
 ## Adapting the `reset` method of the `Game` class
 
-Resetting a game that has been loaded from file using the no-argument reset should place the it
-in the state it was in immediately after the last loading took place. This can be accomplished by
+Using the no-argument reset in a game that has previously been loaded from file should have
+the effect of placing it in the state it was in immediately after the last use of the `load`
+command. This can be accomplished by
 having the `load` method of the `Game` class  store the `FileGameConfiguration` object created
 during loading in an attribute of the `Game` class, e.g.:
-
 ```java
 private GameConfiguration fileloader;
 ```
-
 If you carry out the optional task of storing the initial configurations in the serialized format
 instead of using `initLevelX` methods (see the next section), the `fileLoader`attribute will
 receive a value when the constructor of the game is initialised. Otherwise,
 the value of the `fileLoader` attribute being `null` serves to indicate that the reset should
 return the game to the initial state.
 
-Be sure to check that the new implementation of the `reset` command works corectly, since you may
+Be sure to check that the new implementation of the `reset` command works correctly, since you may
 have encapsulation problems in the `FileGameConfiguration` class which prevent it from doing so.
+
 
 
 
