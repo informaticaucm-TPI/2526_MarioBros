@@ -411,10 +411,9 @@ a new method in the `Game` class [^3]:
 This method, to be called by the `execute` method of the `SaveCommand` class, can be implemented
 by simply calling the `toString` method of the `game` which calls the `toString` method of the
 `container`, which calls the `toString` method of each of the game objects and then writes
-them to file [^4]. Exceptions occuring during the execution of the save method should be
-wrapped in a `GameSaveException`, a subclass of `GameModelException`. Note that
-the system exception `FileNotFoundException` may be one of them since it is also thrown
-in other cases such as if the filename cannot be correctly resolved [^5].
+them to file [^4]. Exceptions occuring during the execution of the `save` method should be
+wrapped in a `GameSaveException`, a subclass of `GameModelException` (which must then be caught
+and wrapped in a `CommandExecuteException`) [^5].
 
 The output of the `help` command should now include details about the `save` command:
 ```
@@ -448,9 +447,13 @@ moving the `save` method from the `game` to the view, so that the view is respon
 calling the `toString` method of the `game`. However, as a counterargument, should a binary
 serialization, rather than a "stringification", also be considered a view?
 
-[^5]: Though not specified by the Java language, the usual policy is that when a program
-attempts to write to a file that does not exist, it is created. It is specified that if the
-file already exists, it is overwritten, unless opened in *append* mode.
+[^5]: Though not stated in the Java specification, the usual policy is that when a program
+attempts to open an output stream to a file that does not exist, it is created (it is
+stated in the Java specification that if the file already exists, it is overwritten, unless
+opened in *append* mode). However, a `FileNotFoundException` may still be thrown on trying
+to open an output stream since it is thrown in cases other than the absence of a
+file with that name, e.g. if the filename cannot be correctly resolved (see the Java
+documentation).
 
 <!-- TOC --><a name="load-command"></a>
 ## Loading the game state from file: the `load` command
@@ -641,6 +644,7 @@ Available commands:
    [l]oad <fileName>: load a state of the game from the text file <fileName>
    ...
 ```
+
 
 
 
