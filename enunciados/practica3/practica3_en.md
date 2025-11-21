@@ -716,13 +716,14 @@ System.lineSeparator() + String.join(System.lineSeparator(), state.getGameObject
 pass a `BufferedReader` to the `FileGameConfiguration` class instead of a file name, as
 discussed in a previous footnote (perhaps also changing the name of the `FileGameConfiguration`
 class since it is no longer restricted to handling data from files),  second, define code to
-generate a
-[StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
-then a `BufferedReader` from an initial configuration stored in an attribute
+generate a `BufferedReader` from an initial configuration stored in an attribute
 called, say, `aGameState`, e.g.
 `BufferedReader inStream = new BufferedReader(new StringReader("" + aGameState ))`,
 where we are assuming that the `toString` of the object stored in `aGameState` producs
-the serialization of the initial configuration.
+the serialization of the initial configuration and we use the
+[StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
+class to generate an input character stream from a string.
+
 
 
 
