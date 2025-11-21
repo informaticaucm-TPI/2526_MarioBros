@@ -532,6 +532,10 @@ the method:
 ```java
  	public List<GameObject> getGameObjects();
 ```
+or even
+```java
+ 	public GameObjectContainer getContainer();
+```
 
 We will define this collection of method declarations to be those of a
 `GameConfiguration` interface, to be placed in the `tp1.logic` package.
@@ -672,12 +676,15 @@ from doing so.
 
 [^9]: A slightly better solution would be to store the game configuration as a
 [Java Record](https://docs.oracle.com/en/java/javase/17/language/records.html),
-containing (at least) three `int`s and a `List<GameObject>` and produced, for example, by
-the implementation of a method `export` to be added to the
+containing (at least) three `int`s and a `List<GameObject>`, or (at least) three `int`s
+and a `GameObjectContainer`, and produced, for example, by the implementation of a method
+`export` to be added to the
 `GameConfiguration` interface. For the implicitly-defined `equals` and `hashCode` methods
 of this record to work correctly, you should ensure that the `GameObjectContainer`
 class has `equals`and `hashCode` methods which, in turn, call `equals` and `hashCode`
-method of the `GameObject` classes.
+method of the `GameObject` classes. It may be advisable to overwrite the `toString` method
+of this record so that in order for it to produce
+the same output as the `toString` method of the `game` having that state.
 
 <!-- TOC --><a name="level-conf"></a>
 ## Initial configurations of the game (optional)
@@ -699,7 +706,10 @@ state information [^11].
 
 [^10]: A good solution would be another use of a
 [Java Record](https://docs.oracle.com/en/java/javase/17/language/records.html),
-this time containing (at least) three `int`s and a `List<String>`
+this time containing (at least) three `int`s and a `List<String>`. Its `toString` method
+could be overwritten to produce the serialization of the state represented, via an instruction
+similar to: `state.getTime() + " " + state.getPoints()
++ " " + state.getLives() + System.lineSeparator() + String.join(System.lineSeparator(), state.getGameObjectStrings())`
 
 [^11]: One possible solution is as follows:  first,
 pass a `BufferedReader` to the `FileGameConfiguration` class instead of a file name, as
@@ -707,12 +717,12 @@ discussed in a previous footnote (perhaps also changing the name of the `FileGam
 class since it is no longer restricted to handling data from files),  second, define code to
 generate a
 [StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
-then a `BufferedReader` from an initial configuration stored in an
-attribute (called, say, `state`); this could be done with an instruction similar to the
-following: `BufferedReader inStream =
-    new BufferedReader(
-        new StringReader(state.getTime() + " " + state.getPoints() + " " + state.getLives() + System.lineSeparator()
-                          + String.join(System.lineSeparator(), state.getGameObjects() ))`
+then a `BufferedReader` from an initial configuration stored in an attribute
+(called, say, `aState`); this could be done with the following instruction
+`BufferedReader inStream = new BufferedReader(new StringReader("" + aGameState ))`,
+assuming that the `toString` of the object stored in `aGameState` producs the serialization
+of the initial configuration.
+
 
 
 
