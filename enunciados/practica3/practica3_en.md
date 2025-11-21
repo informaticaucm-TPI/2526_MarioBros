@@ -652,7 +652,7 @@ Using the no-argument reset in a game that has previously been loaded from file 
 the effect of placing it in the state it was in immediately after the last use of the `load`
 command. This can be accomplished by
 having the `load` method of the `Game` class  store the `FileGameConfiguration` object created
-during loading in an attribute of the `Game` class, e.g.:
+during loading in an attribute of the `Game` class [^9], e.g.:
 ```java
 private GameConfiguration previousConfig;
 ```
@@ -663,11 +663,14 @@ the value of the `previousConfig` attribute being `null` serves to indicate that
 return the game to the initial configuration.
 
 Be sure to check that the new implementation of the `reset` command works correctly, since you may
-have encapsulation problems in the `FileGameConfiguration` class which prevent it from doing so.
+have encapsulation/shared-memory problems in the `FileGameConfiguration` class which prevent it
+from doing so.
 
-
-
-
+[^9]: A slightly better solution would be to store the game configuration as a
+[Java Record](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Record.html)
+produced, for example, by the implementation of a method `export` to be added to the
+`GameConfiguration` interface. If you wish to do so, you should ensure that the `GameObjectContainer`
+class and the `GameObject` classes have `equals`and `hashCode` methods.
 
 
 
