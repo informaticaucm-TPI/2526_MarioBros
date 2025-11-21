@@ -447,8 +447,8 @@ calling the `toString` method of the `game`. However, as a counterargument, shou
 serialization, rather than a "stringification", also be considered a view?
 
 [^5]: Though not specified by the Java language, the usual policy is that when a program
-attempts to write to a file that does not exist, it is created, while if the file
-already exists, it is overwritten (unless opened in *append* mode).
+attempts to write to a file that does not exist, it is created. It is specified that if the
+file already exists, it is overwritten, unless opened in *append* mode.
 
 <!-- TOC --><a name="load-command"></a>
 ## Loading the game state from file: the `load` command
@@ -639,6 +639,7 @@ Available commands:
    [l]oad <fileName>: load a state of the game from the text file <fileName>
    ...
 ```
+
 
 
 
