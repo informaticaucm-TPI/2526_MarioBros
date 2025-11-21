@@ -709,8 +709,8 @@ state information [^11].
 [Java Record](https://docs.oracle.com/en/java/javase/17/language/records.html),
 this time containing (at least) three `int`s and a `List<String>`. Its `toString` method
 should be overwritten to produce the serialization of the state represented, via an instruction
-similar to: `state.getTime() + " " + state.getPoints() + " " + state.getLives()
-+ System.lineSeparator() + String.join(System.lineSeparator(), state.getGameObjectStrings())`
+similar to: `state.getTime() + " " + state.getPoints() + " " + state.getLives() +
+System.lineSeparator() + String.join(System.lineSeparator(), state.getGameObjectStrings())`
 
 [^11]: One possible solution is as follows:  first,
 pass a `BufferedReader` to the `FileGameConfiguration` class instead of a file name, as
@@ -723,6 +723,7 @@ then a `BufferedReader` from an initial configuration stored in an attribute
 `BufferedReader inStream = new BufferedReader(new StringReader("" + aGameState ))`,
 where we are assuming that the `toString` of the object stored in `aGameState` producs
 the serialization of the initial configuration.
+
 
 
 
