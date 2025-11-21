@@ -654,16 +654,17 @@ command. This can be accomplished by
 having the `load` method of the `Game` class  store the `FileGameConfiguration` object created
 during loading in an attribute of the `Game` class, e.g.:
 ```java
-private GameConfiguration fileloader;
+private GameConfiguration previousConfig;
 ```
 If you carry out the optional task of storing the initial configurations in the serialized format
-instead of using `initLevelX` methods (see the next section), the `fileLoader`attribute will
-receive a value when the constructor of the game is initialised. Otherwise,
-the value of the `fileLoader` attribute being `null` serves to indicate that the reset should
-return the game to the initial state.
+instead of using `initLevelX` methods (see the next section), the `previousConfig` attribute will
+be initialised when the constructor of the game is executed. Otherwise,
+the value of the `previousConfig` attribute being `null` serves to indicate that the reset should
+return the game to the initial colnfiguration.
 
 Be sure to check that the new implementation of the `reset` command works correctly, since you may
 have encapsulation problems in the `FileGameConfiguration` class which prevent it from doing so.
+
 
 
 
