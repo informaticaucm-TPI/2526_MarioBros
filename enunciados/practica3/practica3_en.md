@@ -683,8 +683,8 @@ and a `GameObjectContainer`, and produced, for example, by the implementation of
 of this record to work correctly, you should ensure that the `GameObjectContainer`
 class has `equals`and `hashCode` methods which, in turn, call `equals` and `hashCode`
 method of the `GameObject` classes. It may be advisable to overwrite the `toString` method
-of this record so that in order for it to produce
-the same output as the `toString` method of the `game` having that state.
+of this record in order for it to produce
+the same output as would be produced by the `toString` method of the `game` when in that state.
 
 <!-- TOC --><a name="level-conf"></a>
 ## Initial configurations of the game (optional)
@@ -722,6 +722,7 @@ then a `BufferedReader` from an initial configuration stored in an attribute
 `BufferedReader inStream = new BufferedReader(new StringReader("" + aGameState ))`,
 assuming that the `toString` of the object stored in `aGameState` producs the serialization
 of the initial configuration.
+
 
 
 
