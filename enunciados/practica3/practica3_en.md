@@ -719,10 +719,11 @@ class since it is no longer restricted to handling data from files),  second, de
 generate a
 [StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
 then a `BufferedReader` from an initial configuration stored in an attribute
-(called, say, `aState`), e.g.
+called, say, `aGameState`, e.g.
 `BufferedReader inStream = new BufferedReader(new StringReader("" + aGameState ))`,
 where we are assuming that the `toString` of the object stored in `aGameState` producs
 the serialization of the initial configuration.
+
 
 
 
