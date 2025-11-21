@@ -660,10 +660,11 @@ If you carry out the optional task of storing the initial configurations in the 
 instead of using `initLevelX` methods (see the next section), the `previousConfig` attribute will
 be initialised when the constructor of the game is executed. Otherwise,
 the value of the `previousConfig` attribute being `null` serves to indicate that the reset should
-return the game to the initial colnfiguration.
+return the game to the initial configuration.
 
 Be sure to check that the new implementation of the `reset` command works correctly, since you may
 have encapsulation problems in the `FileGameConfiguration` class which prevent it from doing so.
+
 
 
 
