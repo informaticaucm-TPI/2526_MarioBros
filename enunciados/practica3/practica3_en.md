@@ -563,7 +563,7 @@ The `FileGameConfiguration` constructor has two parameters:
 public FileGameConfiguration(String fileName, GameWorld game) throws GameLoadException;
 ```
 
-[^7]: The design consideration discussed in a previous footnote also affects this
+[^7]: The design decision discussed in a previous footnote also affects this
 constructor. We could have used an input character stream as the parameter instead of
 the file name string, in which case, the `game` would be responsible for opening this
 input character stream. This alternative is more flexible since it allows the source
@@ -633,6 +633,7 @@ Available commands:
    [l]oad <fileName>: load a state of the game from the text file <fileName>
    ...
 ```
+
 
 
 
