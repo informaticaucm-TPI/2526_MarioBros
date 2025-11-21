@@ -690,7 +690,7 @@ A mixture of these two solutions is also of interest: the `Game` class could pro
 creative users to create new initial states (using the `addObject` command) which are then stored
 in files, while the initial states corresonding to the standard levels that are shipped with the
 game are stored in `final` attributes of the `Game` class. In this case, we need to address the
-question of how the same game initialisation code can use two different sources.
+question of how the same game initialisation code can use two different sources [^11].
 
 [^10]: A good solution would be another use of a
 [Java Record](https://docs.oracle.com/en/java/javase/17/language/records.html),
@@ -709,6 +709,7 @@ this time containing (at least) three `int`s and a `List<String>`
         new StringReader(time + space + points + space + lives + System.lineSeparator()
                           + String.join(System.lineSeparator(), list_of_gameObject_strings))
 ```
+
 
 
 
