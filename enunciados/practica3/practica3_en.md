@@ -366,7 +366,8 @@ need to define a text-serialized format, in which the state of the game is repre
 the global values followed by a sequence of game elements, each of which is represented as
 a sequence of words in a specified format. For this specified format, we can use the external
 representation introduced in the previous assignment to be used with the `addObject` command
-(as the format for its argument).
+(as the format for its argument). To enhace the readability of the serialized content, we
+separate the external representation of each game object with a line break.
 
 ### Serialization format
 
@@ -640,6 +641,7 @@ Available commands:
    [l]oad <fileName>: load a state of the game from the text file <fileName>
    ...
 ```
+
 
 
 
