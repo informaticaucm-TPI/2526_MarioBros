@@ -667,10 +667,11 @@ have encapsulation/shared-memory problems in the `FileGameConfiguration` class w
 from doing so.
 
 [^9]: A slightly better solution would be to store the game configuration as a
-[Java Record](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Record.html)
+[Java Record](https://docs.oracle.com/en/java/javase/17/language/records.html))
 produced, for example, by the implementation of a method `export` to be added to the
 `GameConfiguration` interface. If you wish to do so, you should ensure that the `GameObjectContainer`
 class and the `GameObject` classes have `equals`and `hashCode` methods.
+
 
 
 
