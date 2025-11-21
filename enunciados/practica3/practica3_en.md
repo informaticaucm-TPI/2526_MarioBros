@@ -2,8 +2,8 @@
 - [Assignment 3: Exception handling and file handling](#practica-3-excepcionesYficheros)
 - [Introduction](#introduccion)
 - [Exception handling](#exceptions)
-	- [Exceptions thrown in the control part of the program](#command-exceptions)
-	- [Exceptions thrown in the model part of the program](#gamemodel-exceptions)
+	- [Exceptions thrown in the *Control* part of the program](#command-exceptions)
+	- [Exceptions thrown in the *Model* part of the program](#gamemodel-exceptions)
 - [File handling](#files)
 	- [Serialization / deserialization](#serialization)
 	- [Saving the game state to file: the `save` command](#save-command)
@@ -104,7 +104,7 @@ in a package called `tp1.exceptions`.
 
 
 <!-- TOC --><a name="command-exceptions"></a>
-## Exceptions thrown in the control part of the program
+## Exceptions thrown in the *Control* part of the program
 
 We define a new exception class called `CommandException` and two subclasses:
 
@@ -263,7 +263,7 @@ execution in the model part of the application may generate exceptions that we w
 `CommandExecuteException`s.
 
 <!-- TOC --><a name="gamemodel-exceptions"></a>
-## Exceptions thrown in the model part of the program
+## Exceptions thrown in the *Model* part of the program
 
 As stated above, the errors in the execution of commands arise in the game logic, that is, in the
 model part of the program and, in the previous assignment, the methods involved returned a `boolean`
@@ -629,5 +629,6 @@ Available commands:
    [l]oad <fileName>: load a state of the game from the text file <fileName>
    ...
 ```
+
 
 
