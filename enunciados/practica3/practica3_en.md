@@ -667,11 +667,48 @@ have encapsulation/shared-memory problems in the `FileGameConfiguration` class w
 from doing so.
 
 [^9]: A slightly better solution would be to store the game configuration as a
-[Java Record](https://docs.oracle.com/en/java/javase/17/language/records.html))
-produced, for example, by the implementation of a method `export` to be added to the
-`GameConfiguration` interface. If you wish to do so, you should ensure that the `GameObjectContainer`
-class and the `GameObject` classes have `equals`and `hashCode` methods.
+[Java Record](https://docs.oracle.com/en/java/javase/17/language/records.html),
+containing (at least) three `int`s and a `List<GameObject>` and produced, for example, by
+the implementation of a method `export` to be added to the
+`GameConfiguration` interface. For the implicitly-defined `equals` and `hashCode` methods
+of this record to work correctly, you should ensure that the `GameObjectContainer`
+class has `equals`and `hashCode` methods which, in turn, call `equals` and `hashCode`
+method of the `GameObject` classes.
 
+<!-- TOC --><a name="level-conf"></a>
+## Initial configurations of the game (optional)
+
+The initial configurations of the game could be stored in the serialized format instead of
+using `initLevelX` methods. The serialized format could either be stored in files (in which case,
+the `Game` class constructor would need to make a correspondence between levels and file names)
+or could be stored in `final` attributes of the `Game` class, as suggested in an optional
+section of the previous assignment (in which case the `Game` class constructor would need to make a
+correspondence between levels and attributes). In the latter case, we need to address the question
+of what is the best format in which to store serialized game states in attributes [^10].
+
+A mixture of these two solutions is also of interest: the `Game` class could provide a way for
+creative users to create new initial states (using the `addObject` command) which are then stored
+in files, while the initial states corresonding to the standard levels that are shipped with the
+game are stored in `final` attributes of the `Game` class. In this case, we need to address the
+question of how the same game initialisation code can use two different sources.
+
+[^10]: A good solution would be another use of a
+[Java Record](https://docs.oracle.com/en/java/javase/17/language/records.html),
+this time containing (at least) three `int`s and a `List<String>`
+
+[^11]: One possible solution is as follows:
+- first, pass `BufferedReader` to the `FileGameConfiguration` class instead of a file name, as
+  discussed in a previous footnote (perhaps also changing the name of the `FileGameConfiguration`
+  class since it is no longer restricted to handling data from files),
+- second, define code to generate a BufferedReader from an initial configuration stored in an
+  attribute. This could be done with an instruction similar to the following:
+  
+```java
+  BufferedReader inStream =
+    new BufferedReader(
+        new StringReader(time + space + points + space + lives + System.lineSeparator()
+                          + String.join(System.lineSeparator(), list_of_gameObject_strings))
+```
 
 
 
