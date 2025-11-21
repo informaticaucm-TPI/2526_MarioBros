@@ -697,17 +697,20 @@ question of how the same game initialisation code can use two different sources 
 this time containing (at least) three `int`s and a `List<String>`
 
 [^11]: One possible solution is as follows:
-- first, pass a `BufferedReader` to the `FileGameConfiguration` class instead of a file name, as
-  discussed in a previous footnote (perhaps also changing the name of the `FileGameConfiguration`
-  class since it is no longer restricted to handling data from files),
-- second, define code to generate a `BufferedReader` from an initial configuration stored in an
-  attribute. This could be done with an instruction similar to the following:    
-  ```java
+  - first, pass a `BufferedReader` to the `FileGameConfiguration` class instead of a file name, as
+discussed in a previous footnote (perhaps also changing the name of the `FileGameConfiguration`
+class since it is no longer restricted to handling data from files),
+  - second, define code to generate a
+[StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
+then a `BufferedReader` from an initial configuration stored in an
+attribute. This could be done with an instruction similar to the following:    
+```java
   BufferedReader inStream =
     new BufferedReader(
         new StringReader(time + space + points + space + lives + System.lineSeparator()
                           + String.join(System.lineSeparator(), list_of_gameObject_strings))
-  ```
+```
+
 
 
 
