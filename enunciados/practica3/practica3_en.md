@@ -425,11 +425,11 @@ Available commands:
    [s]ave <fileName>: save the actual configuration in text file <fileName>
    ...
 ```
-Regarding the `parse` method of the `SaveCommand` classs, the `save` command
+Regarding the `parse` method of the `SaveCommand` class, the `save` command
 could be implemented without parameters, the name of the file to be used being stored
 in a constant attribute of the `LoadCommand` class, allowing only a single saved file,
 or it could be implemented with one `String` parameter: the file name. As can be
-seen from the output of the `help` command, you must
+seen from the output of the `help` command, in this assignment you must
 implement the `save` command with a file-name parameter so the `parse` method of
 `SaveCommand` will have to deal with this parameter.
 
@@ -644,6 +644,7 @@ Available commands:
    [l]oad <fileName>: load a state of the game from the text file <fileName>
    ...
 ```
+
 
 
 
