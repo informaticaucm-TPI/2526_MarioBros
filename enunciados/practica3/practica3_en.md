@@ -703,11 +703,12 @@ class since it is no longer restricted to handling data from files),  second, de
 generate a
 [StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
 then a `BufferedReader` from an initial configuration stored in an
-attribute; this could be done with an instruction similar to the
+attribute (called, say, `state`); this could be done with an instruction similar to the
 following: `BufferedReader inStream =
     new BufferedReader(
-        new StringReader(time + " " + points + " " + lives + System.lineSeparator()
-                          + String.join(System.lineSeparator(), list_of_gameObject_strings))`
+        new StringReader(state.getTime() + " " + state.getPoints() + " " + state.getLives() + System.lineSeparator()
+                          + String.join(System.lineSeparator(), state.getGameObject() ))`
+
 
 
 
