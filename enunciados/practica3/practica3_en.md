@@ -9,7 +9,6 @@
 	- [Saving the game state to file: the `save` command](#save-command)
 	- [Loading the game state from file: the `load` command](#load-command)
 	- [Adapting the `reset` method of the `Game` class](#reset-load-game)
-	- [Details of the `save` command (optional)](#save-command-details)
 	- [Initial configurations of the game (optional)](#level-conf)
 <!-- TOC end -->
 
@@ -490,5 +489,145 @@ Note also that the parsing of the position part of the external representation, 
 carried out in the game-object factory, may throw `PositionParseException`.
 
 [^6]: This is in accordance with the behaviour of library methods such as [Integer.valueOf](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#valueOf-java.lang.String- "Integer.valueOf"). 
+
+<!-- inner TOC --><a name="game-configuration"></a>
+### Representing the loaded state of the game: the `GameConfiguration` interface
+
+A game state can be encapsulated in an object that stores the different components of such
+a state, namely the value of the `game` attributes, remaining time, points and remaining lives,
+and the set of game objects, where we will
+assume that the latter is contained in a newly-created object of the `GameObjectContainer` class.
+Any object representing a game state must provide methods to access the different components
+of this state, i.e. it must implement an interface containing the following method declarations:
+ ```java
+	// game status
+	public int getRemainingTime();
+	public int points();
+	public int numLives();
+	// game objects
+	public Mario getMario();
+	public List<GameObject> getNPCObjects();
+ ```
+Here we are assuming that `game` has an attribute in which it stores a reference to
+`mario`, obliging the interface to distinguish `mario` from the other
+game objects (the NPCs). If, in your implementation, the `Game` class does not have
+an attribute of type `Mario`, the last two methods can be replaced with
+the method:
+```java
+ 	public List<GameObject> getGameObjects();
+```
+
+We will define this collection of method declarations to be those of a
+`GameConfiguration` interface, to be placed in the `tp1.logic` package.
+If you wish to avoid repeating code, you could define an interface called,
+say, `GameRunStatus` containing the first three of the above methods
+and then inherit the `GameRunStatus` interface in both the `GameConfiguration`
+interface and the `GameStatus` interface.
+
+
+<!-- inner TOC --><a name="game-configuration-loader"></a>
+### Reading the file data: the `FileGameConfiguration` class
+
+As a general principle, reading from a file must never:
+1. cause a program to crash,
+2. leave it in an incoherent state
+How do we accomplish this?
+1. Catching all exceptions that could be thrown when reading from a file ensures that
+  the program cannot crash. If the load fails, the program can handle the exception,
+  informing the user, and continue the program exactly as if the load had not been
+  attempted. To this end, to be sure that no exception will go uncaught, after catching
+  specific exceptions, your code should include a clause catching a general exception,
+  `} catch Exception e {`, wrapping it, as for the other exceptions thrown during
+  loading, in a `GameLoadException,` see below.
+2. Loading the file data into a special-purpose object which is then only used (in our
+  case as the new state of the game) if and when the data has been completely and
+  successfully loaded from file is one way of ensuring that the program cannot be left
+  in an incoherent state. In our case, this special-purpose object is an instance of the
+  `FileGameConfiguration` class which implements the `GameConfiguration` interface and
+  is to be placed in the `tp1.logic package`. Ensuring that an incoherent game state
+  can never be used as a working game state is facilitated by performing the loading
+  from file in the constructor of the `FileGameConfiguration` class. Thus, if the
+  checking of validity is exhaustive, objects of this class that encapsulate an
+  incoherent game state can never exist.
+
+The `FileGameConfiguration` constructor has two parameters:
+- a `String` containing the name of the file from which the game state is to be loaded [^7].
+- the game, typed as `GameWorld`, to be passed to the constructor of the game objects
+  (via the parse method of each game object, via the parse method of `GameObjectFactory`).
+
+```java
+public FileGameConfiguration(String fileName, GameWorld game) throws GameLoadException;
+```
+
+[^7]: The design consideration discussed in a previous footnote also affects this
+constructor. We could have used an input character stream as the parameter instead of
+the file name string, in which case, the `game` would be responsible for opening this
+input character stream. This alternative is more flexible since it allows the source
+of the input character stream to be a file or something else (though it should perhaps
+also involve changing the name of the class from `FileGameConfiguration` to
+`GameConfigurationImpl`, for example, to reflect this generalisation).
+
+The constructor can throw the following programmer-defined exception:
+
+- `GameLoadException` (a subclass of `GameModelException`): used to wrap any exception
+  thrown during loading, such as `FileNotFoundException`, any operating system exception,
+  `ObjectParseException`, `OffBoardException`, `PositionParseEsception` or any other
+  exception thrown due to an incorrect file format [^8].
+
+[^8]: If you wish to be exhaustive about this, the validation should also check conditions
+such as that the remaining time, points and remaining lives are within the accepted range
+for these values, and raise an exception if not. However, this is not obligatory.
+
+<!-- inner TOC --><a name="game-load"></a>
+### Adding the implementation of the load command to the `Game` class
+
+We need to add the possibility of loading the state of the game from file to the model
+part of the application. To this end, we add a function called `load` to the `Game` class
+(we will also need to add it to the corresponding interface): 
+
+```java
+	public void load(String fileName) throws GameLoadException {...}
+```
+
+This method simply creates a `FileGameConfiguration` object, typed as a `GameConfiguration`
+and then sets the attributes of the game to the values returned by calls to the methods of the
+`GameConfiguration` interface. It must declare that it throws the same exceptions as the
+constructor of the `FileGameConfiguration` class.
+
+
+<!-- inner TOC --><a name="load-command-class"></a>
+### The `LoadCommand` class
+
+We can now implement the `LoadCommand` class to enable the player to ask the game to
+load a game state from file. After successfully loading such a game state, the `execute`
+method of this class must display it.
+
+The output of the `help` command should now include details about the `save` command:
+```
+Command > h
+[DEBUG] Executing: h
+
+Available commands:
+   ...
+   [l]oad <fileName>: load the game configuration from text file <fileName>
+   ...
+```
+
+Regarding the `parse` method, the `load` command could be implemented without parameters,
+the name of the file to be used being stored in an attribute of the `LoadCommand`
+class, allowing only a single saved file, or it could be implemented with one `String`
+parameter: the file name. You must implement the `load` command with a file-name parameter
+so the `parse` method of `LoadCommand` will have to deal with this parameter.
+
+The help message of the `load` command will have the following form:
+
+```
+[DEBUG] Executing: help
+
+Available commands: 
+   ...
+   [l]oad <fileName>: load a state of the game from the text file <fileName>
+   ...
+```
 
 
