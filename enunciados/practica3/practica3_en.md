@@ -706,8 +706,9 @@ then a `BufferedReader` from an initial configuration stored in an
 attribute; this could be done with an instruction similar to the
 following: `BufferedReader inStream =
     new BufferedReader(
-        new StringReader(time + space + points + space + lives + System.lineSeparator()
+        new StringReader(time + " " + points + " " + lives + System.lineSeparator()
                           + String.join(System.lineSeparator(), list_of_gameObject_strings))`
+
 
 
 
