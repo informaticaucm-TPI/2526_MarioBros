@@ -576,8 +576,8 @@ constructor. We could have used an input character stream as the parameter inste
 the file name string, in which case, the `game` would be responsible for opening this
 input character stream. This alternative is more flexible since it allows the source
 of the input character stream to be a file or something else (though it should perhaps
-also involve changing the name of the class from `FileGameConfiguration` to
-`GameConfigurationImpl`, for example, to reflect this generalisation).
+also involve changing the name of the class from `FileGameConfiguration` to, say,
+`GameConfigurationImpl` to reflect this generalisation).
 
 The constructor can throw the following programmer-defined exception:
 
@@ -639,6 +639,7 @@ Available commands:
    [l]oad <fileName>: load a state of the game from the text file <fileName>
    ...
 ```
+
 
 
 
