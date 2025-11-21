@@ -674,17 +674,18 @@ Be sure to check that the new implementation of the `reset` command works correc
 have encapsulation/shared-memory problems in the `FileGameConfiguration` class which prevent it
 from doing so.
 
-[^9]: A slightly better solution would be to store the game configuration as a
+[^9]: An alternative solution would be to store the game configuration as a
 [Java Record](https://docs.oracle.com/en/java/javase/17/language/records.html),
-containing (at least) three `int`s and a `List<GameObject>`, or (at least) three `int`s
-and a `GameObjectContainer`, and produced, for example, by the implementation of a method
+containing (at least) three `int`s and a `List<GameObject>` (or three `int`s
+and a `GameObjectContainer`), and produced, for example, by the implementation of a method
 `export` to be added to the
 `GameConfiguration` interface. For the implicitly-defined `equals` and `hashCode` methods
-of this record to work correctly, you should ensure that the `GameObjectContainer`
-class has `equals`and `hashCode` methods which, in turn, call `equals` and `hashCode`
-method of the `GameObject` classes. It may be advisable to overwrite the `toString` method
-of this record in order for it to produce
-the same output as would be produced by the `toString` method of the `game` when in that state.
+of this record to work correctly, you should ensure that all the game objects have
+`equals` and `hashCode` methods (and if you use the `GameObjectContainer`, that this
+class has `equals` and `hashCode` methods which call those of the game objects).
+It may also be advisable to overwrite the `toString` method of this record in order for it
+to produce the serialization of the state represented (i.e. the same output as would be
+produced by the `toString` method of the `game` when in that state).
 
 <!-- TOC --><a name="level-conf"></a>
 ## Initial configurations of the game (optional)
@@ -707,9 +708,9 @@ state information [^11].
 [^10]: A good solution would be another use of a
 [Java Record](https://docs.oracle.com/en/java/javase/17/language/records.html),
 this time containing (at least) three `int`s and a `List<String>`. Its `toString` method
-could be overwritten to produce the serialization of the state represented, via an instruction
-similar to: `state.getTime() + " " + state.getPoints()
-+ " " + state.getLives() + System.lineSeparator() + String.join(System.lineSeparator(), state.getGameObjectStrings())`
+should be overwritten to produce the serialization of the state represented, via an instruction
+similar to: `state.getTime() + " " + state.getPoints() + " " + state.getLives()
++ System.lineSeparator() + String.join(System.lineSeparator(), state.getGameObjectStrings())`
 
 [^11]: One possible solution is as follows:  first,
 pass a `BufferedReader` to the `FileGameConfiguration` class instead of a file name, as
@@ -718,10 +719,11 @@ class since it is no longer restricted to handling data from files),  second, de
 generate a
 [StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
 then a `BufferedReader` from an initial configuration stored in an attribute
-(called, say, `aState`); this could be done with the following instruction
+(called, say, `aState`), e.g.
 `BufferedReader inStream = new BufferedReader(new StringReader("" + aGameState ))`,
-assuming that the `toString` of the object stored in `aGameState` producs the serialization
-of the initial configuration.
+where we are assuming that the `toString` of the object stored in `aGameState` producs
+the serialization of the initial configuration.
+
 
 
 
