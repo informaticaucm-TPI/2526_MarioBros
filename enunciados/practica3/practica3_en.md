@@ -688,9 +688,10 @@ of what is the best format in which to store serialized game states in attribute
 
 A mixture of these two solutions is also of interest: the `Game` class could provide a way for
 creative users to create new initial states (using the `addObject` command) which are then stored
-in files, while the initial states corresonding to the standard levels that are shipped with the
+in files, while the initial states corresponding to the standard levels that are shipped with the
 game are stored in `final` attributes of the `Game` class. In this case, we need to address the
-question of how the same game initialisation code can use two different sources [^11].
+question of how the same game initialisation code can use these two different sources of the game
+state information [^11].
 
 [^10]: A good solution would be another use of a
 [Java Record](https://docs.oracle.com/en/java/javase/17/language/records.html),
@@ -708,6 +709,7 @@ following: `BufferedReader inStream =
     new BufferedReader(
         new StringReader(state.getTime() + " " + state.getPoints() + " " + state.getLives() + System.lineSeparator()
                           + String.join(System.lineSeparator(), state.getGameObjects() ))`
+
 
 
 
