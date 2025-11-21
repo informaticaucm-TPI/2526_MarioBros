@@ -404,29 +404,33 @@ representation of the owning object. Since our serialization is to be stringific
 can use the `toString` method of the game objects for this purpose. To this end, we introduce
 a new method in the `Game` class [^3]:
 ```java
-	public void save(String fileName) throws GameModelException {...}
+	public void save(String fileName) throws GameSaveException {...}
 ```
 This method, to be called by the `execute` method of the `SaveCommand` class, can be implemented
 by simply calling the `toString` method of the `game` which calls the `toString` method of the
 `container`, which calls the `toString` method of each of the game objects and then writes
-them to file [^4]. Note that it will need to throw more exceptions than shown here, for example,
-if the file could not be opened [^5].
+them to file [^4]. Exceptions occuring during the execution of the save method should be
+wrapped in a `GameSaveException`, a subclass of `GameModelException`. Note that
+the system exception `FileNotFoundException` may be one of them since it is also thrown
+in other cases such as if the filename cannot be correctly resolved [^5].
 
-The `help` command should now show the existence of the `save` command:
+The output of the `help` command should now include details about the `save` command:
 ```
 Command > h
 [DEBUG] Executing: h
 
 Available commands:
+   ...
    [s]ave <fileName>: save the actual configuration in text file <fileName>
    ...
 ```
 
-[^3]: Which class should be responsible for opening the file stream is a design decision.
+[^3]: Which class should be responsible for opening the input character stream is a
+not-so-obvious design decision.
 Instead of the `execute` method of the `SaveCommand` class passing the filename as an
-argument to the `save` method for it to then open the file stream as suggested here, the 
-`execute` method could open the file stream and then pass it as an argument to the `save`
-method, rather than passing the file name.
+argument to the `save` method for it to then open the input character stream as
+suggested here, the `execute` method could open the input character stream and then
+pass it as an argument to the `save` method, rather than passing the file name.
 
 [^4]: It could be argued that the textual representation being saved to file is a view in
 the sense of the MVC architecture and that the *View* part of the application should
@@ -437,7 +441,7 @@ serialization, rather than a "stringification", also be considered a view?
 
 [^5]: Though not specified by the Java language, the usual policy is that when a program
 attempts to write to a file that does not exist, it is created, while if the file
-already exists, it is overwritten.
+already exists, it is overwritten (unless opened in *append* mode).
 
 <!-- TOC --><a name="load-command"></a>
 ## Loading the game state from file: the `load` command
@@ -629,6 +633,7 @@ Available commands:
    [l]oad <fileName>: load a state of the game from the text file <fileName>
    ...
 ```
+
 
 
 
