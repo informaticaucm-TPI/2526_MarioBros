@@ -656,8 +656,8 @@ Available commands:
 <!-- TOC --><a name="reset-load-game"></a>
 ## Adapting the `reset` method of the `Game` class
 
-Using the no-argument reset in a game that has previously been loaded from file should have
-the effect of placing it in the state it was in immediately after the last use of the `load`
+Using the no-argument `reset` command in a game that has previously been loaded from file should
+have the effect of placing it in the state it was in immediately after the last use of the `load`
 command. This can be accomplished by
 having the `load` method of the `Game` class  store the `FileGameConfiguration` object created
 during loading in an attribute of the `Game` class [^9], e.g.:
@@ -723,6 +723,7 @@ where we are assuming that the `toString` of the object stored in `aGameState` p
 the serialization of the initial configuration and where we are using the
 [StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
 class to generate an input character stream from a string.
+
 
 
 
