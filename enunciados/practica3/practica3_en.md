@@ -187,22 +187,13 @@ something similar to the following:
 			Messages.LEVEL_NOT_A_NUMBER_ERROR.formatted(commandWords[1]), nfe);
 	}
 ```
-
-We also define the following new Exception classes for exceptions which may be thrown when parsing
-text that is supposed to represent an action or when parsing text that is supposed to represent a
-position:
-
-  - `ActionParseException`: to be thrown by the `Action` class when an attempt is made to parse
-     a string that does not correspond to any of the literals of the enum.
-	
-  - `PositionParseException`: to be thrown by the `Position` class when an attempt is made to
-     parse a string that is not the textual representation of a position string, i.e. does not
-     respect the syntax for a position string (note that this does not concern whether or not
-     the position is off the board)
-     
-If thrown during the parsing of a command, these exceptions should also be caught and wrapped
-in a `CommandParseException`.
-
+Note that with some commands, parsing is carried out both in the *Contol* part and in the *Model*
+part of the application. For example, only the *Model* can parse the arguments to the `addObject`
+command since this is carried out by calling the `parse` method of the game objects. Therefore, the
+*Model* part of the application can also throw parsing exceptions. All exceptions thrown during
+the parsing of a command (i.e. during the execution of the `parse` method of one of the commands),
+whether or not they are thrown in the *Model* part of the application, should be caught by the
+`parse` of the command and rethrown wrapped in a `CommandParseException`.
 
 ### Execution errors
 
@@ -265,15 +256,17 @@ execution in the model part of the application may generate exceptions that we w
 <!-- TOC --><a name="gamemodel-exceptions"></a>
 ## Exceptions thrown in the *Model* part of the program
 
-As stated above, the errors in the execution of commands arise in the game logic, that is, in the
-model part of the program and, in the previous assignment, the methods involved returned a `boolean`
-value to indicate whether the execution had succeeded or failed. For example, the  `addObject` method
+Some of the errors that occur during the parsing of commands and most, if not all, of the errors
+that occur during the execution of commands, arise in the game logic, that is, in the *Model* part
+of the program. In the
+previous assignment, the methods in which the errors occurred may have returned a `boolean` value
+to indicate whether the execution had succeeded or failed. For example, the `addObject` method
 of `GameModel` returned `false` when the position passed as argument was outside the board or when
 the parameter does not correspond to any known game object. However, returning the value `false` did
 not permit these two types of error to be distinguished. Generating error data, in particular an
 error message, at the point in the code where the error occurs enables such distinction. We could
 repurpose the boolean return value and maintain it as an indication of whether or not the game state
-has been modified. The program con now display the following error messages (notice the two messages,
+has been modified. The program should now display the following error messages (notice the two messages,
 one from each level of exception):
 
 - On trying to add an unknown type of game object:
@@ -283,11 +276,9 @@ one from each level of exception):
  	[ERROR] Error: Command execute problem
  	[ERROR] Error: Unknown game object: "(3,2) poTaTo"
 	```
-  We define a new exception `ObjectParseException` to be thrown when an attempt is made to
-  parse a string, the syntax of the object part of which is incorrect, or whose object part
-  is not the external representation of any known game object.
-  
-  excepción lanzada cuando no se puede analizar la línea porque su formato es incorrecto, por ejemplo por no tener todos los datos necesarios, por tener más datos de los necesarios, por tener un nombre de objeto desconocido, etc.
+  We define a new exception class `ObjectParseException` to be thrown by the `parse` of the
+  `GameObjectFactory` when an attempt is made to parse a string, the object part of which has
+  syntax errors or which is not the external representation of any known game object.
 
 - On trying to add an object in a position that is outside the board:
 	```
@@ -296,10 +287,10 @@ one from each level of exception):
 	[ERROR] Error: Command execute problem
 	[ERROR] Error: Object position is off board: "(-4,24) Ground"
 	```
-  We define a new exception `OffBoardException` to be thrown when an attempt is made to access
-  a position that is outside the board.
+  We define a new exception class `OffBoardException` to be thrown when an attempt is made to
+  access a position that is outside the board.
   
-For convenience, we also define a new exception `GameModelException` which is the superclass of
+For convenience, we also define a new exception class `GameModelException` which is the superclass of
 the above two exceptions. The method `addObject` method of the `GameModel` interface is now declared
 to throw (at least) these two exceptions:
 
@@ -313,18 +304,27 @@ or, alternatively,:
 public void addObject(String[] objWords) throws GameModelException;
 ```
 
-The parsing of the position part of the argument to the `addObject`
-command should be carried out in the `parse` of the game objects since the position
-is an attribute of `GameObject, so the `addObject` method will also need to declare
-the throwing of `PositionParseException` that is defined above.
-If your solution uses the action literals `LEFT` and `RIGHT` to also represent
-movement directions (this is not obligatory), the `addObject` method will also need
-to declare the throwing of `ActionParseException` that is defined above.
+We also define the following new exception classes for exceptions which may be thrown when parsing
+text that is expected to represent an action or a position respectively:
 
-The above exceptions are to be thrown by methods of the `GameModel` interface that are
-called from one or more of the `execute` methods of the commands. As already stated, they
-should be caught in the corresponding `execute` method and rethrown, wrapped in a
-`CommandExecuteException`. For example:
+  - `ActionParseException`: to be thrown by the `Action` class when an attempt is made to parse
+     a string that does not correspond to any of the literals of the `Action` enum. This exception
+     may be thrown on parsing the `action` command. If your solution uses the action literals
+    `LEFT` and `RIGHT` to also represent movement directions (this is not obligatory), it
+     may also be thrown during the parsing of the `addObject` command.
+	
+  - `PositionParseException`: to be thrown by the `Position` class when an attempt is made to
+     parse a string that is not the textual representation of a position string, i.e. does not
+     respect the syntax for a position string (note that this does not concern whether or not
+     the position is off the board). This exception may be thrown during the parsing of the
+     `addObject` command as well as during the execution of the `load` command, which also
+     involves parsing, as we will see below.
+
+As stated in a previous section, exceptions thrown in the *Model* part of the application
+during the parsing of a command should be caught in the `parse` method of the command and
+rethrown wrapped in a `CommandParseException`. Similarly, exceptions thrown in the *Model*
+part of the application during the execution of a command should be caught in the `execute`
+method of the command and wrapped in a `CommandExecuteException`, for example:
 
 ```java
 } catch (OffBoardException obe) {
@@ -724,6 +724,7 @@ where we are assuming that the `toString` of the object stored in `aGameState` p
 the serialization of the initial configuration and where we are using the
 [StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
 class to generate an input character stream from a string.
+
 
 
 
