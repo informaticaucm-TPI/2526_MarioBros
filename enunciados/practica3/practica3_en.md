@@ -313,12 +313,13 @@ or, alternatively,:
 public void addObject(String[] objWords) throws GameModelException;
 ```
 
-If, in your solution, the parsing of the position part of the argument to the `addObject`
-command is carried out in a method of the `Game` class, the `addObject` method will also
-need to declare the throwing of `PositionParseException` as defined above.
-If, in your solution, the action literals `LEFT` and `RIGHT` are also used to represent
-movement directions, the `addObject` method will also need to declare the throwing of
-`ActionParseException` as defined above.
+The parsing of the position part of the argument to the `addObject`
+command should be carried out in the `parse` of the game objects since the position
+is an attribute of `GameObject, so the `addObject` method will also need to declare
+the throwing of `PositionParseException` that is defined above.
+If your solution uses the action literals `LEFT` and `RIGHT` to also represent
+movement directions (this is not obligatory), the `addObject` method will also need
+to declare the throwing of `ActionParseException` that is defined above.
 
 The above exceptions are to be thrown by methods of the `GameModel` interface that are
 called from one or more of the `execute` methods of the commands. As already stated, they
@@ -723,6 +724,7 @@ where we are assuming that the `toString` of the object stored in `aGameState` p
 the serialization of the initial configuration and where we are using the
 [StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
 class to generate an input character stream from a string.
+
 
 
 
