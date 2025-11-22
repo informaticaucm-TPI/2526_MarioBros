@@ -427,7 +427,7 @@ Available commands:
 ```
 Regarding the `parse` method of the `SaveCommand` class, the simplest way to
 implement a `save` command would be without parameters, the name of the file to be
-used being ``hardwired'', i.e. stored in a constant attribute of the `SaveCommand`
+used being "hardwired", i.e. stored in a constant attribute of the `SaveCommand`
 class, allowing only one game state to be saved at any one time. Alternatively,
 the `save` command could be implemented with one `String` parameter: the file name.
 As can be seen from the output of the `help` command, in this assignment you must
@@ -723,6 +723,7 @@ where we are assuming that the `toString` of the object stored in `aGameState` p
 the serialization of the initial configuration and where we are using the
 [StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
 class to generate an input character stream from a string.
+
 
 
 
