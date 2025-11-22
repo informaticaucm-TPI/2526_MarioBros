@@ -263,7 +263,7 @@ of the program. In the
 previous assignment, the methods in which the errors occurred may have returned a `boolean` value
 to indicate whether the execution had succeeded or failed. For example, the `addObject` method
 of `GameModel` returned `false` when the position passed as argument was outside the board or when
-the parameter does not correspond to any known game object. However, returning the value `false` did
+the parameter did not correspond to any known game object. However, returning the value `false` did
 not permit these two types of error to be distinguished. Generating error data, in particular an
 error message, at the point in the code where the error occurs enables such distinction. We could
 repurpose the boolean return value and maintain it as an indication of whether or not the game state
@@ -735,6 +735,7 @@ where we are assuming that the `toString` of the object stored in `aGameState` p
 the serialization of the initial configuration and where we are using the
 [StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
 class to generate an input character stream from a string.
+
 
 
 
