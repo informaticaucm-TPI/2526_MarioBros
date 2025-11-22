@@ -463,7 +463,7 @@ In the following sections we present an implementation of a new command, the `lo
 used to read a state of the game from a file. The implementation of the `load` command
 is inevitably more complicated than that of the corresponding `save` command though we
 have already defined the serialization format and, moreover, we have already created the
-code that parses this format, in particular, the object factory. We divide the
+code that parses this format, in particular, the game-object factory. We divide the
 task of implementing the `load` command into the following subtasks:
 
 - [add exceptions to the `GameObjectFactory` class](#game-object-factory),
@@ -723,6 +723,7 @@ where we are assuming that the `toString` of the object stored in `aGameState` p
 the serialization of the initial configuration and where we are using the
 [StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
 class to generate an input character stream from a string.
+
 
 
 
