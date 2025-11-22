@@ -198,11 +198,11 @@ whether or not they are thrown in the *Model* part of the application, should be
 ### Execution errors
 
 An error that occurs during the execution of a command will lead to the throwing of a
-`CommandExecuteException` in the body of the `execute` method of the commands. This exception will
-be used to wrap lower-level exceptions thrown on the occurrence of errors in the model
+`CommandExecuteException` in the body of the `execute` method of the commands. This exception
+will be used to wrap lower-level exceptions thrown on the occurrence of errors in the *Model*
 part of the application (we deal with these errors in detail in the next section).
 
-The `execute()` method of the `Command` class must now be declared to throw exceptions of type 
+The `execute` method of the `Command` class must now be declared to throw exceptions of type 
 `CommandExecuteException`:
 
 ```java
@@ -724,6 +724,7 @@ where we are assuming that the `toString` of the object stored in `aGameState` p
 the serialization of the initial configuration and where we are using the
 [StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
 class to generate an input character stream from a string.
+
 
 
 
