@@ -189,7 +189,8 @@ something similar to the following:
 ```
 Note that with some commands, parsing is carried out both in the *Contol* part and in the *Model*
 part of the application. For example, only the *Model* can parse the arguments to the `addObject`
-command since this is carried out by calling the `parse` method of the game objects. Therefore, the
+command since this is carried out by calling the `parse` method of the `GameObjectFactory` which
+calls the `parse` method of the game objects. Therefore, the
 *Model* part of the application can also throw parsing exceptions. All exceptions thrown during
 the parsing of a command (i.e. during the execution of the `parse` method of one of the commands),
 whether or not they are thrown in the *Model* part of the application, should be caught by the
@@ -724,6 +725,7 @@ where we are assuming that the `toString` of the object stored in `aGameState` p
 the serialization of the initial configuration and where we are using the
 [StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
 class to generate an input character stream from a string.
+
 
 
 
