@@ -291,18 +291,11 @@ one from each level of exception):
   We define a new exception class `OffBoardException` to be thrown when an attempt is made to
   access a position that is outside the board.
   
-For convenience, we also define a new exception class `GameModelException` which is the superclass of
-the above two exceptions. The `addObject` method of the `GameModel` interface is now declared
-to throw (at least) these two exceptions:
+The `addObject` method of the `GameModel` interface must now be declared
+to throw these two exceptions (and possibly more):
 
 ```java
 public void addObject(String[] objWords) throws OffBoardException, ObjectParseException;
-```
-
-or, alternatively,:
-
-```java
-public void addObject(String[] objWords) throws GameModelException;
 ```
 
 We also define the following new exception classes for exceptions which may be thrown when parsing
@@ -320,6 +313,23 @@ text that is expected to represent an action or a position respectively:
      the position is off the board). This exception may be thrown during the parsing of the
      `addObject` command as well as during the execution of the `load` command, which also
      involves parsing, as we will see below.
+
+For convenience, we organise the above exceptions in an inheritance hierarchy using two new
+Exception class `GameModelException` and `GameModelParseException` as follows:
+- `GameModelException` has subclasses:
+   * `OffBoardException`
+   * `GameParseException` has subclasses:
+      + `ObjectParseException`
+      + `ActionParseException`
+      + `PositionParseException`
+
+Since the `addObject` method throws `OffBoardException`s, `ObjectParseException`s,
+`PositionParseException`s and perhaps also `ActionParseException`s we can now simplify its
+declaration as follows:
+
+```java
+public void addObject(String[] objWords) throws GameModelException;
+```
 
 As stated in a previous section, exceptions thrown in the *Model* part of the application
 during the parsing of a command should be caught in the `parse` method of the command and
@@ -725,6 +735,7 @@ where we are assuming that the `toString` of the object stored in `aGameState` p
 the serialization of the initial configuration and where we are using the
 [StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
 class to generate an input character stream from a string.
+
 
 
 
