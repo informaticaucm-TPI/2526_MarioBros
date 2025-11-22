@@ -277,10 +277,6 @@ one from each level of exception):
  	[ERROR] Error: Command execute problem
  	[ERROR] Error: Unknown game object: "(3,2) poTaTo"
 	```
-  We define a new exception class `ObjectParseException` to be thrown by the `parse` of the
-  `GameObjectFactory` when an attempt is made to parse a string, the object part of which has
-  syntax errors or which is not the external representation of any known game object.
-
 - On trying to add an object in a position that is outside the board:
 	```
 	[DEBUG] Executing: addObject (-4,24) Ground
@@ -288,11 +284,13 @@ one from each level of exception):
 	[ERROR] Error: Command execute problem
 	[ERROR] Error: Object position is off board: "(-4,24) Ground"
 	```
-  We define a new exception class `OffBoardException` to be thrown when an attempt is made to
-  access a position that is outside the board.
-  
-The `addObject` method of the `GameModel` interface must now be declared
-to throw these two exceptions (and possibly more):
+We handle the first of these erorrs by defining a new exception class `ObjectParseException` to be
+thrown by the `parse` of the `GameObjectFactory` when an attempt is made to parse a string, the object
+part of which has syntax errors or which is not the external representation of any known game object
+(c.f. the exception thrown by the `parse` method of the `CommandGenerator`. We handle the second by
+defining a new exception class `OffBoardException` to be thrown when an attempt is made to
+access a position that is outside the board. The `addObject` method of the `GameModel` interface
+must now be declared to throw these two exceptions (and more, as we see below):
 
 ```java
 public void addObject(String[] objWords) throws OffBoardException, ObjectParseException;
@@ -301,8 +299,8 @@ public void addObject(String[] objWords) throws OffBoardException, ObjectParseEx
 We also define the following new exception classes for exceptions which may be thrown when parsing
 text that is expected to represent an action or a position respectively:
 
-  - `ActionParseException`: to be thrown by the `Action` class when an attempt is made to parse
-     a string that does not correspond to any of the literals of the `Action` enum. This exception
+  - `ActionParseException`: to be thrown by the `Action` enum when an attempt is made to parse
+     a string that does not correspond to any of the literals of the enum. This exception
      may be thrown on parsing the `action` command. If your solution uses the action literals
     `LEFT` and `RIGHT` to also represent movement directions (this is not obligatory), it
      may also be thrown during the parsing of the `addObject` command.
@@ -311,14 +309,14 @@ text that is expected to represent an action or a position respectively:
      parse a string that is not the textual representation of a position string, i.e. does not
      respect the syntax for a position string (note that this does not concern whether or not
      the position is off the board). This exception may be thrown during the parsing of the
-     `addObject` command as well as during the execution of the `load` command, which also
-     involves parsing, as we will see below.
+     `addObject` command as well as during the execution of the `load` command, which
+     inevitably also involves parsing, as we see below.
 
 For convenience, we organise the above exceptions in an inheritance hierarchy using two new
 Exception class `GameModelException` and `GameModelParseException` as follows:
 - `GameModelException` has subclasses:
    * `OffBoardException`
-   * `GameParseException` has subclasses:
+   * `GameModelParseException` has subclasses:
       + `ObjectParseException`
       + `ActionParseException`
       + `PositionParseException`
@@ -735,6 +733,7 @@ where we are assuming that the `toString` of the object stored in `aGameState` p
 the serialization of the initial configuration and where we are using the
 [StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
 class to generate an input character stream from a string.
+
 
 
 
