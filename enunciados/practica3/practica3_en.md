@@ -670,9 +670,9 @@ be initialised when the constructor of the game is executed. Otherwise,
 the value of the `previousConfig` attribute being `null` serves to indicate that the reset should
 return the game to the initial configuration.
 
-Be sure to check that the new implementation of the `reset` command works correctly, since you may
-have encapsulation/shared-memory problems in the `FileGameConfiguration` class which prevent it
-from doing so.
+**Warning**: be sure to check that the new implementation of the `reset` command works correctly,
+since you may have encapsulation/shared-memory problems in the `FileGameConfiguration` class which
+prevent it from doing so.
 
 [^9]: An alternative solution would be to store the game configuration as a
 [Java Record](https://docs.oracle.com/en/java/javase/17/language/records.html),
@@ -723,6 +723,7 @@ where we are assuming that the `toString` of the object stored in `aGameState` p
 the serialization of the initial configuration and where we are using the
 [StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
 class to generate an input character stream from a string.
+
 
 
 
