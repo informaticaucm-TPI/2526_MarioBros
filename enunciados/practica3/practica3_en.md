@@ -287,7 +287,7 @@ one from each level of exception):
 We handle the first of these erorrs by defining a new exception class `ObjectParseException` to be
 thrown by the `parse` of the `GameObjectFactory` when an attempt is made to parse a string, the object
 part of which has syntax errors or which is not the external representation of any known game object
-(c.f. the exception thrown by the `parse` method of the `CommandGenerator`. We handle the second by
+(c.f. the exception thrown by the `parse` method of the `CommandGenerator`). We handle the second by
 defining a new exception class `OffBoardException` to be thrown when an attempt is made to
 access a position that is outside the board. The `addObject` method of the `GameModel` interface
 must now be declared to throw these two exceptions (and more, as we see below):
@@ -733,6 +733,7 @@ where we are assuming that the `toString` of the object stored in `aGameState` p
 the serialization of the initial configuration and where we are using the
 [StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
 class to generate an input character stream from a string.
+
 
 
 
