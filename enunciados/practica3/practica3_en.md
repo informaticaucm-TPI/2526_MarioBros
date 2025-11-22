@@ -421,9 +421,9 @@ a new method in the `Game` class [^3]:
 This method, to be called by the `execute` method of the `SaveCommand` class, can be implemented
 by simply calling the `toString` method of the `game` which calls the `toString` method of the
 `container`, which calls the `toString` method of each of the game objects and then writes
-them to file [^4]. Exceptions occuring during the execution of the `save` method should be
-caught and wrapped in a `GameSaveException`, a subclass of `GameModelException` (which must then
-be caught and wrapped in a `CommandExecuteException`) [^5].
+the resulting string to file [^4]. Exceptions occuring during the execution of the `save` method
+should be caught and wrapped in a `GameSaveException`, a subclass of `GameModelException` (which
+must then, in turn, be caught and wrapped in a `CommandExecuteException`) [^5].
 
 The output of the `help` command should now include details about the `save` command:
 ```
@@ -733,6 +733,7 @@ where we are assuming that the `toString` of the object stored in `aGameState` p
 the serialization of the initial configuration and where we are using the
 [StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
 class to generate an input character stream from a string.
+
 
 
 
