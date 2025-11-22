@@ -292,7 +292,7 @@ one from each level of exception):
   access a position that is outside the board.
   
 For convenience, we also define a new exception class `GameModelException` which is the superclass of
-the above two exceptions. The method `addObject` method of the `GameModel` interface is now declared
+the above two exceptions. The `addObject` method of the `GameModel` interface is now declared
 to throw (at least) these two exceptions:
 
 ```java
@@ -725,6 +725,7 @@ where we are assuming that the `toString` of the object stored in `aGameState` p
 the serialization of the initial configuration and where we are using the
 [StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
 class to generate an input character stream from a string.
+
 
 
 
