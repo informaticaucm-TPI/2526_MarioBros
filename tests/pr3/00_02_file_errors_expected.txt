@@ -33,7 +33,6 @@ Command > [DEBUG] Executing: load conf_2
 
 [ERROR] Error: Unable to load game configuration from file "conf_2"
 [ERROR] Error: Incorrect game status "2 5"
-[ERROR] Error: null
 Command > [DEBUG] Executing: load conf_3
 
 [ERROR] Error: Unable to load game configuration from file "conf_3"
