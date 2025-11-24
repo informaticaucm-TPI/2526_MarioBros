@@ -231,7 +231,7 @@ value being assigned (as it does in C).
 			try { ... }
 			catch (CommandException e) {
 				view.showError(e.getMessage());
-				Thowable wrapped = e;
+				Throwable wrapped = e;
 				// display all levels of error message
 				while ( (wrapped = wrapped.getCause()) != null )
 					view.showError(wrapped.getMessage());
@@ -739,6 +739,7 @@ into a stream. In both solutions, we could choose to modify the `export` method
 proposed in footnote 9 to produce a java record of the type proposed in footnote 10
 (with the inconvenience of repeating the validation of the data and the construction
 of the objects if the serialized state is used).
+
 
 
 
