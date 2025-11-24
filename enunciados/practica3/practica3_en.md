@@ -722,7 +722,7 @@ should be overwritten to produce the serialization of the state represented, via
 similar to: `return state.getTime() + " " + state.getPoints() + " " + state.getLives() +
 System.lineSeparator() + String.join(System.lineSeparator(), state.getGameObjectStrings())`
 
-[^11]: One possible solution is as follows:  first,
+[^11]: One possible solution is to turn the non-stream source into a stream as follows:  first,
 pass a `BufferedReader` to the `FileGameConfiguration` class instead of a file name, as
 discussed in a previous footnote (perhaps also changing the name of the `FileGameConfiguration`
 class since it is no longer restricted to handling data from files); second, define code to
@@ -733,6 +733,13 @@ where we are assuming that the `toString` of the object stored in `aGameState` p
 the serialization of the initial configuration and where we are using the
 [StringReader](https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html)
 class to generate an input character stream from a string.
+Another solution would be to modify the code of the `FileGameConfiguration` class to
+accept data from either source without having to convert the in-memory serialization
+into a stream. In both solutions, we could choose to modify the `export` method
+proposed in footnote 9 to produce a java record of the type proposed in footnote 10
+(with the inconvenience of repeating the validation of the data and the construction
+of the objects if the serialized state is used).
+
 
 
 
