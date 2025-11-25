@@ -135,7 +135,7 @@ The following classes are involved in our application of the *command pattern*:
 
      * If so, it returns an instance of the owning class, which then represents this use of the command.
        In the case of a command with no parameters, the `parse` method can simply return the value `this`.
-       but in the case of a command with parameters, to avoid creating *fragile* code [^5], it must return
+       But in the case of a command with parameters, to avoid creating *fragile* code [^5], it must return
        a new instance of the command class, rather than changing the values of the attributes
        of the containing object and then returning `this`.
 
@@ -507,6 +507,7 @@ Recall that after refactoring, the program should have exactly the same function
 error messages may need to be less precise) and should therefore pass the same system tests, even though the implementation now contains many more classes.
 
 The template that we provide you with includes classes called `tp1.Tests_V2_1` and `tp1.Tests_V2_1` which, like `tp1.Tests`, are classes of JUnit tests, the former containing the test cases for part I of this assignment and the latter containing test cases for the extensions implemented in part II of this assignment.
+
 
 
 
