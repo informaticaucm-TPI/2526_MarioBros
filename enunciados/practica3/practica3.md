@@ -426,7 +426,6 @@ Durante la carga de la configuración del juego del fichero se pueden producir m
 
 	[ERROR] Error: Unable to load game configuration from file "conf_2"
 	[ERROR] Error: Incorrect game status "2 5"
-	[ERROR] Error: null
 	```
 
 - Los objetos que aparecen en el fichero son de tipo conocido:
